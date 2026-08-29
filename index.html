@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ΤΟ ΟΝΟΜΑ ΣΟΥ — Marketing sites, Custom CMS &amp; E-shops</title>
-<meta name="description" content="Σχεδιάζω και αναπτύσσω marketing sites, custom CMS και e-shops. Γρήγορα, καθαρά, φτιαγμένα να φέρνουν πελάτες.">
+<title>Galaxy Studios — Marketing sites, Custom CMS &amp; E-shops</title>
+<meta name="description" content="Σχεδιάζουμε και αναπτύσσουμε marketing sites, custom CMS και e-shops. Γρήγορα, καθαρά, φτιαγμένα να φέρνουν πελάτες.">
 
 <!--
   ========================================================
   ΤΙ ΝΑ ΑΛΛΑΞΕΙΣ (Ctrl+F):
-  1. "ΤΟ ΟΝΟΜΑ ΣΟΥ"  -> brand (title, logo, footer)
+  1. Brand name: Galaxy Studios (ήδη μπήκε παντού)
   2. "ΕΡΓΟ 0"        -> πραγματικά έργα + links + screenshots
   3. data-target="…" -> τα νούμερα στα στατιστικά
   4. "mailto:" / "tel:" / "wa.me" -> στοιχεία επικοινωνίας
@@ -208,8 +208,8 @@ footer{border-top:1px solid var(--line-soft);padding:46px 0;margin-top:110px}
 .foot nav{display:flex;gap:24px}
 
 /* ---------- τίτλοι λέξη-λέξη ---------- */
-.w{display:inline-block;opacity:0;transform:translateY(0.5em) rotate(2deg);transition:opacity .9s cubic-bezier(.16,.8,.3,1),transform .9s cubic-bezier(.16,.8,.3,1)}
-.in .w,.w.in{opacity:1;transform:none}
+.w{display:inline-block;opacity:0;transform:translateY(0.5em) rotate(2deg);filter:blur(5px);transition:opacity .9s cubic-bezier(.16,.8,.3,1),transform .9s cubic-bezier(.16,.8,.3,1),filter .9s cubic-bezier(.16,.8,.3,1)}
+.in .w,.w.in{opacity:1;transform:none;filter:none}
 
 /* ---------- κάρτες εναλλάξ ---------- */
 .rv.from-left{transform:translateX(-38px) translateY(18px)}
@@ -230,6 +230,16 @@ footer{border-top:1px solid var(--line-soft);padding:46px 0;margin-top:110px}
 /* ---------- σκόνη κέρσορα ---------- */
 .dustc{position:fixed;inset:0;z-index:130;pointer-events:none}
 
+/* ---------- skeleton loading effect ---------- */
+.shot{position:relative;overflow:hidden}
+.shot.skeleton::before{
+  content:'';position:absolute;inset:0;z-index:0;
+  background:linear-gradient(100deg,transparent 35%,rgba(230,198,132,.14) 50%,transparent 65%);
+  background-size:220% 100%;
+  animation:shimmer 2.6s ease-in-out infinite;
+}
+@keyframes shimmer{0%{background-position:140% 0}100%{background-position:-40% 0}}
+
 /* ---------- preloader ---------- */
 .loader{position:fixed;inset:0;z-index:200;background:var(--void);display:grid;place-items:center;transition:opacity .9s ease,visibility .9s}
 .loader span{font-family:var(--display);font-weight:800;font-size:clamp(1.7rem,4.2vw,2.8rem);background:linear-gradient(100deg,#f7e7bd,var(--gold) 45%,#fdfbf4);-webkit-background-clip:text;background-clip:text;color:transparent;opacity:0;animation:brandIn 1.5s ease .15s forwards}
@@ -247,7 +257,7 @@ footer{border-top:1px solid var(--line-soft);padding:46px 0;margin-top:110px}
 .cards,.work{perspective:1000px}
 
 /* ---------- reveal ---------- */
-.rv{opacity:0;transform:translateY(30px);transition:opacity 1.2s cubic-bezier(.16,.8,.3,1),transform 1.2s cubic-bezier(.16,.8,.3,1)}
+.rv{opacity:0;transform:translateY(52px);transition:opacity 1s cubic-bezier(.16,.8,.24,1),transform 1s cubic-bezier(.16,.8,.24,1)}
 .rv.in{opacity:1;transform:none}
 
 :focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:6px}
@@ -272,19 +282,20 @@ footer{border-top:1px solid var(--line-soft);padding:46px 0;margin-top:110px}
 @media(prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   .track{animation:none}
-  .rv{opacity:1;transform:none;transition:none}
+  .rv{opacity:1;transform:none;filter:none;transition:none}
   .dot{animation:none}
   .grain{animation:none}
   .loader span{animation:none;opacity:1}
-  .w{opacity:1;transform:none;transition:none}
+  .w{opacity:1;transform:none;filter:none;transition:none}
   .card li{opacity:1;transform:none;transition:none}
   .rv.from-left,.rv.from-right{transform:none}
+  .shot.skeleton::before{animation:none}
 }
 </style>
 </head>
 <body>
 
-<div class="loader" id="loader"><span>ΤΟ ΟΝΟΜΑ ΣΟΥ</span></div>
+<div class="loader" id="loader"><span>Galaxy Studios</span></div>
 <div class="grain" aria-hidden="true"></div>
 <canvas class="dustc" id="dustc" aria-hidden="true"></canvas>
 <div class="progress" id="progress" aria-hidden="true"></div>
@@ -294,28 +305,28 @@ footer{border-top:1px solid var(--line-soft);padding:46px 0;margin-top:110px}
 <div class="page">
 
 <nav class="nav" id="nav">
-  <a href="#top" class="brand"><i></i>ΤΟ ΟΝΟΜΑ ΣΟΥ</a>
+  <a href="#top" class="brand"><i></i>Galaxy Studios</a>
   <div class="navlinks">
     <a href="#services">Υπηρεσίες</a>
     <a href="#work">Έργα</a>
     <a href="#process">Πώς δουλεύω</a>
     <a href="#contact">Επικοινωνία</a>
   </div>
-  <a href="#contact" class="btn btn-main">Ζήτα προσφορά</a>
+  <a href="#contact" class="btn btn-main">Κάντε τις ιδέες σας πραγματικότητα</a>
   <button class="burger" id="burger" aria-label="Μενού">☰</button>
 </nav>
 
 <header class="hero" id="top">
   <div class="wrap hero-in">
-    <div class="eyebrow rv">Αθήνα · Web studio</div>
+    <div class="eyebrow rv">Αθήνα · Η ομάδα μας</div>
     <h1 class="rv">Το site σου,<br><span class="grad">σε άλλο επίπεδο.</span></h1>
-    <p class="lead rv">Marketing sites, custom CMS και e-shops. Φορτώνουν γρήγορα, δείχνουν πολυτελή και είναι φτιαγμένα για να τραβούν πελάτες — όχι απλώς να υπάρχουν.</p>
+    <p class="lead rv">Marketing sites, custom CMS και e-shops. Χτίζουμε site που φορτώνουν γρήγορα, δείχνουν πολυτελή και είναι φτιαγμένα για να τραβούν πελάτες — όχι απλώς να υπάρχουν.</p>
     <div class="cta-row rv">
-      <a href="#contact" class="btn btn-main">Ζήτα προσφορά →</a>
+      <a href="#contact" class="btn btn-main">Κάντε τις ιδέες σας πραγματικότητα</a>
       <a href="#work" class="btn btn-ghost">Δες τα έργα</a>
     </div>
     <div class="hero-meta rv">
-      <span><i class="dot"></i>Δέχομαι νέα έργα</span>
+      <span><i class="dot"></i>Δεχόμαστε νέα έργα</span>
       <span>Παράδοση από 2 εβδομάδες</span>
       <span>Υποστήριξη μετά το λανσάρισμα</span>
     </div>
@@ -333,7 +344,7 @@ footer{border-top:1px solid var(--line-soft);padding:46px 0;margin-top:110px}
     <div class="sec-head rv">
       <div class="eyebrow">Υπηρεσίες</div>
       <h2>Τρεις τρόποι να είσαι online</h2>
-      <p>Διάλεξε αυτό που ταιριάζει στη δουλειά σου. Αν δεν είσαι σίγουρος, στείλε μου δυο γραμμές για την επιχείρησή σου και σου λέω εγώ.</p>
+      <p>Διάλεξε αυτό που ταιριάζει στη δουλειά σου. Αν δεν είσαι σίγουρος, στείλε μας δυο γραμμές για την επιχείρησή σου και σου λέμε εμείς.</p>
     </div>
 
     <div class="cards">
@@ -397,10 +408,10 @@ footer{border-top:1px solid var(--line-soft);padding:46px 0;margin-top:110px}
     </div>
     <div class="work">
       <!-- ΑΝΤΙΚΑΤΕΣΤΗΣΕ τα 4 έργα με τα δικά σου (βάλε <img> στη θέση του .shot) -->
-      <a href="#" class="proj rv"><div class="shot"><em>ΕΡΓΟ 01 · ΒΑΛΕ SCREENSHOT</em></div><div class="proj-body"><div><h3>Όνομα έργου</h3><p>Δύο γραμμές: τι χρειαζόταν ο πελάτης και τι άλλαξε μετά.</p></div><span class="tag">Marketing</span></div></a>
-      <a href="#" class="proj rv"><div class="shot"><em>ΕΡΓΟ 02 · ΒΑΛΕ SCREENSHOT</em></div><div class="proj-body"><div><h3>Όνομα έργου</h3><p>Δύο γραμμές: τι χρειαζόταν ο πελάτης και τι άλλαξε μετά.</p></div><span class="tag">E-shop</span></div></a>
-      <a href="#" class="proj rv"><div class="shot"><em>ΕΡΓΟ 03 · ΒΑΛΕ SCREENSHOT</em></div><div class="proj-body"><div><h3>Όνομα έργου</h3><p>Δύο γραμμές: τι χρειαζόταν ο πελάτης και τι άλλαξε μετά.</p></div><span class="tag">Custom CMS</span></div></a>
-      <a href="#" class="proj rv"><div class="shot"><em>ΕΡΓΟ 04 · ΒΑΛΕ SCREENSHOT</em></div><div class="proj-body"><div><h3>Όνομα έργου</h3><p>Δύο γραμμές: τι χρειαζόταν ο πελάτης και τι άλλαξε μετά.</p></div><span class="tag">Web app</span></div></a>
+      <a href="demo-cafe.html" class="proj rv"><div class="shot" style="background:linear-gradient(150deg,#e7c9a4,#c4643a 55%,#5b4230)"><em style="color:rgba(255,250,240,.85)">ΑΥΡΑ · SPECIALTY COFFEE</em></div><div class="proj-body"><div><h3>Αύρα Coffee</h3><p>Marketing site για specialty coffee shop — ιστορία, μενού με ζωντανές κατηγορίες, animations στο scroll.</p></div><span class="tag">Marketing</span></div></a>
+      <a href="https://pokemon-3d-shop.vercel.app/" target="_blank" rel="noopener" class="proj rv"><div class="shot" style="background:linear-gradient(150deg,#ffce54,#e63946 55%,#2b1055)"><em style="color:rgba(255,250,240,.85)">POKÉSHOP 3D</em></div><div class="proj-body"><div><h3>PokéShop 3D</h3><p>E-shop για συλλεκτικά Pokémon, Yu-Gi-Oh &amp; Panini με 3D εμπειρία — καλάθι, checkout, δωρεάν αποστολή άνω των 50€.</p></div><span class="tag">E-shop</span></div></a>
+      <a href="demo-cms.html" class="proj rv"><div class="shot" style="background:linear-gradient(150deg,#2c313d,#171a21 65%)"><em style="color:rgba(232,223,210,.6)">AΥΡΑ · ADMIN DASHBOARD</em></div><div class="proj-body"><div><h3>Αύρα — Πίνακας Διαχείρισης</h3><p>Custom CMS demo: ο ιδιοκτήτης προσθέτει/επεξεργάζεται προϊόντα, αλλάζει διαθεσιμότητα, χωρίς κώδικα.</p></div><span class="tag">Custom CMS</span></div></a>
+      <a href="demo-dispatch.html" class="proj rv"><div class="shot" style="background:linear-gradient(150deg,#3a4a6b,#1c2438 60%,#0d1120)"><em style="color:rgba(220,226,240,.65)">ΠΙΝΑΚΑΣ ΔΙΑΝΟΜΩΝ · LIVE DEMO</em></div><div class="proj-body"><div><h3>Εφαρμογή Διανομών</h3><p>Καταστήματα δημοσιεύουν παραγγελία, διανομείς τη βλέπουν live και την αναλαμβάνουν — δοκίμασέ το με 2 tabs.</p></div><span class="tag">Web app</span></div></a>
     </div>
   </div>
 </section>
@@ -412,10 +423,10 @@ footer{border-top:1px solid var(--line-soft);padding:46px 0;margin-top:110px}
       <h2>Τέσσερα βήματα, χωρίς εκπλήξεις</h2>
     </div>
     <div class="steps">
-      <div class="step rv"><b>01</b><h3>Κουβέντα</h3><p>Μου λες τι κάνεις και τι θες να πετύχεις. Σου λέω τι χρειάζεται και τι όχι.</p></div>
+      <div class="step rv"><b>01</b><h3>Κουβέντα</h3><p>Μας λες τι κάνεις και τι θες να πετύχεις. Σου λέμε τι χρειάζεται και τι όχι.</p></div>
       <div class="step rv"><b>02</b><h3>Πρόταση</h3><p>Παίρνεις γραπτή τιμή, χρονοδιάγραμμα και τι ακριβώς περιλαμβάνει.</p></div>
       <div class="step rv"><b>03</b><h3>Σχεδιασμός &amp; κατασκευή</h3><p>Βλέπεις το design πριν γραφτεί κώδικας και δοκιμάζεις το site πριν βγει.</p></div>
-      <div class="step rv"><b>04</b><h3>Λανσάρισμα</h3><p>Ανεβαίνει, μετράμε, διορθώνουμε. Και μετά είμαι εδώ για ό,τι χρειαστεί.</p></div>
+      <div class="step rv"><b>04</b><h3>Λανσάρισμα</h3><p>Ανεβαίνει, μετράμε, διορθώνουμε. Και μετά είμαστε εδώ για ό,τι χρειαστεί.</p></div>
     </div>
   </div>
 </section>
@@ -424,12 +435,12 @@ footer{border-top:1px solid var(--line-soft);padding:46px 0;margin-top:110px}
   <div class="wrap">
     <div class="cta rv">
       <h2>Πες μου τι θέλεις να φτιάξουμε</h2>
-      <p>Στείλε μου δυο γραμμές για την επιχείρησή σου. Απαντάω αυθημερόν με μια πρώτη εκτίμηση, χωρίς δέσμευση.</p>
+      <p>Στείλε μας δυο γραμμές για την επιχείρησή σου. Απαντάμε αυθημερόν με μια πρώτη εκτίμηση, χωρίς δέσμευση.</p>
       <div class="cta-row">
         <!-- ΑΛΛΑΞΕ τα στοιχεία επικοινωνίας -->
-        <a href="mailto:hello@example.com" class="btn btn-main">Στείλε email</a>
-        <a href="https://wa.me/30690XXXXXXX" class="btn btn-ghost">WhatsApp</a>
-        <a href="tel:+30690XXXXXXX" class="btn btn-ghost">Κάλεσε με</a>
+        <a href="mailto:2006chrisko@gmail.com" class="btn btn-main">Στείλε email</a>
+        <a href="https://wa.me/306906686806" class="btn btn-ghost">WhatsApp</a>
+        <a href="tel:+306906686806" class="btn btn-ghost">Κάλεσε μας</a>
       </div>
     </div>
   </div>
@@ -437,7 +448,7 @@ footer{border-top:1px solid var(--line-soft);padding:46px 0;margin-top:110px}
 
 <footer>
   <div class="wrap foot rv">
-    <p>© <span id="yr">2026</span> ΤΟ ΟΝΟΜΑ ΣΟΥ — Αθήνα</p>
+    <p>© <span id="yr">2026</span> Galaxy Studios — Αθήνα</p>
     <nav>
       <a href="#services">Υπηρεσίες</a>
       <a href="#work">Έργα</a>
@@ -449,6 +460,8 @@ footer{border-top:1px solid var(--line-soft);padding:46px 0;margin-top:110px}
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script>
 (function(){
   'use strict';
@@ -467,17 +480,40 @@ footer{border-top:1px solid var(--line-soft);padding:46px 0;margin-top:110px}
   var track = document.getElementById('track');
   track.innerHTML += track.innerHTML;
 
-  var io = new IntersectionObserver(function(es){
-    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }});
-  },{threshold:.12, rootMargin:'0px 0px -60px'});
-  document.querySelectorAll('.rv').forEach(function(el,i){
-    el.style.transitionDelay = (i % 4) * 100 + 'ms';
-    io.observe(el);
-  });
-  /* το hero ξεδιπλώνεται σε σειρά μόλις φύγει ο preloader */
-  document.querySelectorAll('.hero .rv, .strip.rv').forEach(function(el,i){
-    el.style.transitionDelay = (1500 + i * 130) + 'ms';
-  });
+  /* ---------------- Scroll Reveal με GSAP + ScrollTrigger ---------------- */
+  var hasGSAP = (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined');
+
+  if(hasGSAP){
+    gsap.registerPlugin(ScrollTrigger);
+
+    /* hero + marquee: ξεδιπλώνονται σε σειρά αμέσως μόλις φύγει ο preloader (όχι με scroll) */
+    var heroEls = document.querySelectorAll('.hero .rv, .strip.rv');
+    heroEls.forEach(function(el, i){
+      el.style.transitionDelay = (1500 + i * 130) + 'ms';
+      el.classList.add('in');
+    });
+
+    /* όλα τα υπόλοιπα: εμφανίζονται ομαλά προς τα πάνω μόλις μπουν στο κάδρο, staggered ανά ομάδα */
+    var groups = ['.sec-head.rv', '.card.rv', '.proj.rv', '.stat.rv', '.step.rv', '.cta.rv', '.foot.rv'];
+    groups.forEach(function(sel){
+      var els = gsap.utils.toArray(sel);
+      if(!els.length) return;
+      gsap.set(els, {opacity:0, y:52});
+      ScrollTrigger.batch(els, {
+        start: 'top 88%',
+        once: true,
+        onEnter: function(batch){
+          gsap.to(batch, {
+            opacity:1, y:0, duration:1, ease:'power3.out', stagger:0.14,
+            onStart: function(){ batch.forEach(function(el){ el.classList.add('in'); }); }
+          });
+        }
+      });
+    });
+  } else {
+    /* δίχτυ ασφαλείας αν το CDN της GSAP αποτύχει να φορτώσει: δείξε τα πάντα κανονικά */
+    document.querySelectorAll('.rv').forEach(function(el){ el.classList.add('in'); });
+  }
 
   var counted = new IntersectionObserver(function(es){
     es.forEach(function(e){
@@ -548,13 +584,34 @@ footer{border-top:1px solid var(--line-soft);padding:46px 0;margin-top:110px}
   }
 
   /* ---------------- εφέ κειμένου & UI ---------------- */
-  /* τίτλοι: σπάνε σε λέξεις που ανεβαίνουν διαδοχικά */
+  /* τίτλοι: σπάνε σε λέξεις που ανεβαίνουν διαδοχικά — διατρέχει τον DOM
+     ώστε να ΜΗΝ σπάει ένθετα στοιχεία όπως το <span class="grad"> */
+  var wordCounter = { n: 0 };
+  function wrapWordsIn(node, counter, extraClass){
+    var isGrad = node.nodeType === 1 && node.classList && node.classList.contains('grad');
+    Array.from(node.childNodes).forEach(function(child){
+      if(child.nodeType === 3){ // text node
+        var parts = child.textContent.split(/(\s+)/).filter(function(s){ return s.length; });
+        var frag = document.createDocumentFragment();
+        parts.forEach(function(part){
+          if(/^\s+$/.test(part)){ frag.appendChild(document.createTextNode(part)); }
+          else {
+            var span = document.createElement('span');
+            span.className = 'w' + (extraClass ? ' ' + extraClass : '');
+            span.textContent = part;
+            span.style.transitionDelay = (counter.n * 85) + 'ms';
+            counter.n++;
+            frag.appendChild(span);
+          }
+        });
+        node.replaceChild(frag, child);
+      } else if(child.nodeType === 1 && child.tagName !== 'BR'){
+        wrapWordsIn(child, counter, isGrad ? 'grad' : extraClass);
+      }
+    });
+  }
   document.querySelectorAll('h1, .sec-head h2, .cta h2').forEach(function(h){
-    var html = h.innerHTML.split('<br>').map(function(line){
-      return line.trim().split(/\s+/).map(function(w){ return '<span class="w">' + w + '</span>'; }).join(' ');
-    }).join('<br>');
-    h.innerHTML = html;
-    h.querySelectorAll('.w').forEach(function(w, i){ w.style.transitionDelay = (i * 85) + 'ms'; });
+    wrapWordsIn(h, wordCounter = { n: 0 });
     h.classList.add('rv-words');
   });
   var wordIO = new IntersectionObserver(function(es){
@@ -564,10 +621,7 @@ footer{border-top:1px solid var(--line-soft);padding:46px 0;margin-top:110px}
   /* ο τίτλος του hero περιμένει τον preloader */
   document.querySelectorAll('.hero h1 .w').forEach(function(w, i){ w.style.transitionDelay = (1650 + i * 85) + 'ms'; });
 
-  /* κάρτες: μπαίνουν εναλλάξ αριστερά/δεξιά */
-  document.querySelectorAll('.cards .card, .work .proj').forEach(function(c, i){
-    c.classList.add(i % 2 === 0 ? 'from-left' : 'from-right');
-  });
+  /* (η πλάγια είσοδος αριστερά/δεξιά αφαιρέθηκε — οι κάρτες μπαίνουν ίσια από κάτω) */
 
   /* λίστες υπηρεσιών: γράφονται μία-μία */
   document.querySelectorAll('.card ul').forEach(function(ul){
@@ -627,6 +681,7 @@ footer{border-top:1px solid var(--line-soft);padding:46px 0;margin-top:110px}
       if(Math.abs(diff) < 0.4){ sCurrent = sTarget; sRunning = false; window.scrollTo(0, sCurrent); return; }
       sCurrent += diff * 0.085;          /* όσο μικρότερο, τόσο πιο βαρύ/απαλό */
       window.scrollTo(0, sCurrent);
+      if(hasGSAP) ScrollTrigger.update();
       requestAnimationFrame(sLoop);
     }
     function kick(){ if(!sRunning){ sRunning = true; requestAnimationFrame(sLoop); } }
@@ -954,25 +1009,6 @@ footer{border-top:1px solid var(--line-soft);padding:46px 0;margin-top:110px}
   );
   scene.add(pr);
 
-  /* απαλό glow γύρω από όλο το σύστημα */
-  var glow = new THREE.Mesh(
-    new THREE.PlaneGeometry(11, 11),
-    new THREE.ShaderMaterial({
-      transparent:true, depthWrite:false, blending:THREE.AdditiveBlending,
-      uniforms:{},
-      vertexShader:'varying vec2 vUv2; void main(){ vUv2=uv; gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0); }',
-      fragmentShader:[
-        'varying vec2 vUv2;',
-        'void main(){',
-        '  float d = length(vUv2 - 0.5) * 2.0;',
-        '  float a = pow(max(1.0 - d, 0.0), 2.6) * 0.16;',
-        '  gl_FragColor = vec4(vec3(1.0, 0.92, 0.74), a);',
-        '}'
-      ].join('\n')
-    })
-  );
-  scene.add(glow);
-
   /* --- scroll: πλησιάζεις από το πλάι προς το κέντρο --- */
   /* p, θέση x/y/z, κλίμακα s, κλίση rx (0=πλάι/edge-on), roll rz */
   var KEYS = [
@@ -1049,13 +1085,10 @@ footer{border-top:1px solid var(--line-soft);padding:46px 0;margin-top:110px}
     starMat.uniforms.uHole.value.copy(hole.position);
     starMat.uniforms.uMass.value = 1.15 * s;
 
-    /* photon ring & glow ακολουθούν την τρύπα και κοιτούν την κάμερα */
+    /* photon ring ακολουθεί την τρύπα και κοιτάει την κάμερα */
     pr.position.copy(hole.position);
     pr.scale.set(s, s, s);
     pr.lookAt(camera.position);
-    glow.position.copy(hole.position);
-    glow.scale.set(s, s, s);
-    glow.lookAt(camera.position);
 
     if(!reduce){
       stars.rotation.y += dt * 0.005;

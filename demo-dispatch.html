@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Διανομές — Live Demo</title>
+<meta name="description" content="Demo web app διανομών: καταστήματα δημοσιεύουν παραγγελίες, διανομείς τις αναλαμβάνουν σε πραγματικό χρόνο.">
+
+<!-- DEMO PROJECT by Galaxy Studios — εφαρμογή διανομών με φανταστικά δεδομένα -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#0d1120;
+  --panel:#161c30;
+  --panel2:#1c2438;
+  --ink:#e8ecf6;
+  --muted:#8892ad;
+  --line:rgba(140,155,200,.14);
+  --accent:#4f7cff;
+  --accent-deep:#3a5fd0;
+  --ok:#3ddc97;
+  --warn:#f0b653;
+  --body:'Inter',system-ui,sans-serif;
+  --mono:'JetBrains Mono',ui-monospace,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);-webkit-font-smoothing:antialiased;min-height:100vh}
+
+.demo-bar{background:#080b14;color:#cfd6e8;font-family:var(--mono);font-size:.72rem;text-align:center;padding:8px 16px}
+.demo-bar a{color:#8fb0ff;text-decoration:underline}
+
+.wrap{max-width:960px;margin:0 auto;padding:26px 18px 80px}
+
+.head{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:22px}
+.head h1{font-size:1.3rem;font-weight:700;display:flex;align-items:center;gap:10px}
+.head h1 i{width:9px;height:9px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px var(--accent)}
+.head p{font-size:.82rem;color:var(--muted)}
+
+/* persona switcher */
+.personas{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:26px}
+.persona{padding:9px 15px;border-radius:100px;border:1px solid var(--line);background:var(--panel);color:var(--muted);font-size:.82rem;font-weight:600;cursor:pointer;transition:all .18s;display:flex;align-items:center;gap:7px}
+.persona:hover{border-color:var(--accent);color:var(--ink)}
+.persona.active{background:var(--accent);border-color:var(--accent);color:#fff}
+.persona .ico{font-size:.9rem}
+
+.tip{font-size:.78rem;color:var(--muted);background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:12px 16px;margin-bottom:24px;line-height:1.55}
+.tip b{color:var(--ink)}
+
+/* panels */
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:22px;margin-bottom:18px}
+.panel h2{font-size:.95rem;font-weight:700;margin-bottom:16px;display:flex;align-items:center;gap:10px}
+.count{font-family:var(--mono);font-size:.7rem;background:var(--panel2);border:1px solid var(--line);border-radius:100px;padding:3px 10px;color:var(--muted)}
+
+/* store form */
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+.field label{display:block;font-size:.72rem;color:var(--muted);margin-bottom:5px}
+.field input,.field select{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:9px;background:var(--panel2);color:var(--ink);font-size:.88rem;font-family:inherit}
+.field input:focus,.field select:focus{outline:none;border-color:var(--accent)}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:11px 20px;border-radius:10px;border:0;font-weight:600;font-size:.88rem;cursor:pointer;transition:background .15s,transform .15s}
+.btn-main{background:var(--accent);color:#fff}
+.btn-main:hover{background:var(--accent-deep)}
+.btn-ok{background:var(--ok);color:#08130e}
+.btn-ok:hover{filter:brightness(1.08)}
+.btn-sm{padding:8px 15px;font-size:.8rem}
+@media(max-width:640px){.form-grid{grid-template-columns:1fr}}
+
+/* orders */
+.order{background:var(--panel2);border:1px solid var(--line);border-radius:13px;padding:15px 17px;display:flex;justify-content:space-between;align-items:center;gap:14px;margin-bottom:10px;animation:pop .35s cubic-bezier(.16,.8,.3,1)}
+@keyframes pop{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.order-info b{font-size:.92rem}
+.order-info .meta{font-size:.76rem;color:var(--muted);margin-top:3px;display:flex;gap:12px;flex-wrap:wrap}
+.order-info .meta span{display:inline-flex;align-items:center;gap:4px}
+.badge{font-family:var(--mono);font-size:.64rem;letter-spacing:.06em;padding:4px 10px;border-radius:100px;white-space:nowrap}
+.badge.open{background:rgba(240,182,83,.12);color:var(--warn);border:1px solid rgba(240,182,83,.3)}
+.badge.taken{background:rgba(79,124,255,.12);color:#8fb0ff;border:1px solid rgba(79,124,255,.3)}
+.badge.done{background:rgba(61,220,151,.1);color:var(--ok);border:1px solid rgba(61,220,151,.28)}
+.order-actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap;justify-content:flex-end}
+.empty{padding:26px;text-align:center;color:var(--muted);font-size:.85rem}
+
+/* toast */
+.toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%) translateY(18px);background:#080b14;border:1px solid var(--line);color:var(--ink);padding:12px 20px;border-radius:11px;font-size:.85rem;opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;z-index:90}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+.reset{background:none;border:0;color:var(--muted);font-size:.74rem;cursor:pointer;text-decoration:underline}
+.reset:hover{color:var(--ink)}
+</style>
+</head>
+<body>
+
+<div class="demo-bar">Demo project από τη <strong>Galaxy Studios</strong> — φανταστικά καταστήματα &amp; διανομείς. Άνοιξε τη σελίδα σε <strong>2 tabs</strong> με διαφορετικό ρόλο για να δεις τον live συγχρονισμό. <a href="index.html">← Πίσω στο site</a></div>
+
+<div class="wrap">
+  <div class="head">
+    <div>
+      <h1><i></i>Πίνακας Διανομών</h1>
+      <p>Επίλεξε ρόλο: τα καταστήματα δημοσιεύουν, οι διανομείς αναλαμβάνουν.</p>
+    </div>
+    <button class="reset" id="resetBtn">Επαναφορά demo δεδομένων</button>
+  </div>
+
+  <div class="personas" id="personas">
+    <button class="persona active" data-role="store" data-id="lava"><span class="ico">🍕</span>Πιτσαρία Λάβα</button>
+    <button class="persona" data-role="store" data-id="dias"><span class="ico">🍔</span>Burger Δίας</button>
+    <button class="persona" data-role="store" data-id="kyma"><span class="ico">🍣</span>Sushi Κύμα</button>
+    <button class="persona" data-role="courier" data-id="nikos"><span class="ico">🛵</span>Νίκος (διανομέας)</button>
+    <button class="persona" data-role="courier" data-id="maria"><span class="ico">🛵</span>Μαρία (διανομέας)</button>
+  </div>
+
+  <div class="tip" id="tip"></div>
+
+  <!-- STORE VIEW -->
+  <div id="storeView">
+    <div class="panel">
+      <h2>Νέα παραγγελία</h2>
+      <div class="form-grid">
+        <div class="field"><label>Διεύθυνση πελάτη</label><input id="fAddr" type="text" placeholder="π.χ. Ερμού 24, 2ος όροφος"></div>
+        <div class="field"><label>Περιγραφή</label><input id="fDesc" type="text" placeholder="π.χ. 2× Μαργαρίτα, 1× αναψυκτικό"></div>
+        <div class="field"><label>Ποσό (€)</label><input id="fAmount" type="text" placeholder="18.50"></div>
+        <div class="field"><label>Πληρωμή</label>
+          <select id="fPay"><option>Μετρητά</option><option>Κάρτα / πληρωμένη</option></select>
+        </div>
+      </div>
+      <button class="btn btn-main" id="postBtn">Δημοσίευση παραγγελίας</button>
+    </div>
+    <div class="panel">
+      <h2>Οι παραγγελίες μου <span class="count" id="storeCount">0</span></h2>
+      <div id="storeOrders"></div>
+    </div>
+  </div>
+
+  <!-- COURIER VIEW -->
+  <div id="courierView" style="display:none">
+    <div class="panel">
+      <h2>Ανοιχτές παραγγελίες <span class="count" id="openCount">0</span></h2>
+      <div id="openOrders"></div>
+    </div>
+    <div class="panel">
+      <h2>Οι παραδόσεις μου <span class="count" id="mineCount">0</span></h2>
+      <div id="myOrders"></div>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+(function(){
+  'use strict';
+
+  var KEY = 'galaxystudios_demo_dispatch_v1';
+  var STORES = {lava:'Πιτσαρία Λάβα', dias:'Burger Δίας', kyma:'Sushi Κύμα'};
+  var COURIERS = {nikos:'Νίκος', maria:'Μαρία'};
+
+  var role = 'store', me = 'lava';
+
+  /* --- δεδομένα + συγχρονισμός μεταξύ tabs --- */
+  var chan = ('BroadcastChannel' in window) ? new BroadcastChannel(KEY) : null;
+
+  function seed(){
+    return [
+      {id:1, store:'dias', addr:'Σόλωνος 88', desc:'2× Classic burger, 1× πατάτες', amount:16.80, pay:'Μετρητά', status:'open', courier:null, ts:Date.now()-5*60000},
+      {id:2, store:'kyma', addr:'Πλ. Μαβίλη 3', desc:'1× Sushi box 16τμχ', amount:24.00, pay:'Κάρτα / πληρωμένη', status:'taken', courier:'maria', ts:Date.now()-12*60000}
+    ];
+  }
+  function load(){
+    try{ var raw = localStorage.getItem(KEY); return raw ? JSON.parse(raw) : seed(); }
+    catch(e){ return seed(); }
+  }
+  function persist(){ try{ localStorage.setItem(KEY, JSON.stringify(orders)); }catch(e){} }
+  var orders = load();
+
+  function sync(){
+    persist();
+    if(chan) chan.postMessage('sync');
+    render();
+  }
+  if(chan){
+    chan.onmessage = function(){
+      var before = orders.filter(function(o){ return o.status==='open'; }).length;
+      orders = load();
+      var after = orders.filter(function(o){ return o.status==='open'; }).length;
+      if(role === 'courier' && after > before){ beep(); toast('🔔 Νέα παραγγελία!'); }
+      render();
+    };
+  }
+  /* fallback: αν δεν υπάρχει BroadcastChannel, άκου το storage event */
+  addEventListener('storage', function(e){
+    if(e.key === KEY){ orders = load(); render(); }
+  });
+
+  /* --- ήχος ειδοποίησης (WebAudio, χωρίς αρχείο) --- */
+  var actx = null;
+  function beep(){
+    try{
+      actx = actx || new (window.AudioContext || window.webkitAudioContext)();
+      var o = actx.createOscillator(), g = actx.createGain();
+      o.type = 'sine'; o.frequency.value = 880;
+      g.gain.setValueAtTime(0.0001, actx.currentTime);
+      g.gain.exponentialRampToValueAtTime(0.25, actx.currentTime + 0.02);
+      g.gain.exponentialRampToValueAtTime(0.0001, actx.currentTime + 0.5);
+      o.connect(g); g.connect(actx.destination);
+      o.start(); o.stop(actx.currentTime + 0.55);
+      /* δεύτερο "ντιν" */
+      var o2 = actx.createOscillator(), g2 = actx.createGain();
+      o2.type = 'sine'; o2.frequency.value = 1320;
+      g2.gain.setValueAtTime(0.0001, actx.currentTime + 0.18);
+      g2.gain.exponentialRampToValueAtTime(0.2, actx.currentTime + 0.2);
+      g2.gain.exponentialRampToValueAtTime(0.0001, actx.currentTime + 0.7);
+      o2.connect(g2); g2.connect(actx.destination);
+      o2.start(actx.currentTime + 0.18); o2.stop(actx.currentTime + 0.75);
+    }catch(e){}
+  }
+
+  /* --- UI helpers --- */
+  function esc(s){ var d=document.createElement('div'); d.textContent=s; return d.innerHTML; }
+  function ago(ts){
+    var m = Math.max(1, Math.round((Date.now()-ts)/60000));
+    return m < 60 ? ('πριν ' + m + '΄') : ('πριν ' + Math.round(m/60) + 'ω');
+  }
+  var toastEl = document.getElementById('toast'), toastT;
+  function toast(msg){
+    toastEl.textContent = msg;
+    toastEl.classList.add('show');
+    clearTimeout(toastT);
+    toastT = setTimeout(function(){ toastEl.classList.remove('show'); }, 2400);
+  }
+
+  function orderHTML(o, actions){
+    return '<div class="order"><div class="order-info"><b>'+esc(o.desc)+'</b>' +
+      '<div class="meta"><span>🏪 '+STORES[o.store]+'</span><span>📍 '+esc(o.addr)+'</span><span>💶 '+o.amount.toFixed(2)+'€ · '+esc(o.pay)+'</span><span>🕐 '+ago(o.ts)+'</span></div></div>' +
+      '<div class="order-actions">'+actions+'</div></div>';
+  }
+  function badge(o){
+    if(o.status==='open') return '<span class="badge open">ΑΝΟΙΧΤΗ</span>';
+    if(o.status==='taken') return '<span class="badge taken">ΣΕ ΠΑΡΑΔΟΣΗ · '+COURIERS[o.courier].toUpperCase()+'</span>';
+    return '<span class="badge done">ΠΑΡΑΔΟΘΗΚΕ · '+COURIERS[o.courier].toUpperCase()+'</span>';
+  }
+
+  /* --- render --- */
+  function render(){
+    var storeView = document.getElementById('storeView');
+    var courierView = document.getElementById('courierView');
+    storeView.style.display = role==='store' ? '' : 'none';
+    courierView.style.display = role==='courier' ? '' : 'none';
+
+    document.getElementById('tip').innerHTML = role==='store'
+      ? 'Είσαι το <b>'+STORES[me]+'</b>. Δημοσίευσε μια παραγγελία — θα εμφανιστεί αμέσως στους διανομείς. <b>Δοκίμασε:</b> άνοιξε τη σελίδα σε δεύτερο tab σαν διανομέας και δες τη να φτάνει live, με ήχο.'
+      : 'Είσαι ο/η <b>'+COURIERS[me]+'</b>. Βλέπεις όλες τις ανοιχτές παραγγελίες απ\u2019 όλα τα καταστήματα — όποιος προλάβει. Πάτα «Ανάλαβε» και μετά «Παραδόθηκε».';
+
+    if(role==='store'){
+      var mine = orders.filter(function(o){ return o.store===me; }).sort(function(a,b){ return b.ts-a.ts; });
+      document.getElementById('storeCount').textContent = mine.length;
+      document.getElementById('storeOrders').innerHTML = mine.length
+        ? mine.map(function(o){ return orderHTML(o, badge(o)); }).join('')
+        : '<div class="empty">Καμία παραγγελία ακόμα — δημοσίευσε την πρώτη!</div>';
+    } else {
+      var open = orders.filter(function(o){ return o.status==='open'; }).sort(function(a,b){ return b.ts-a.ts; });
+      var mine2 = orders.filter(function(o){ return o.courier===me; }).sort(function(a,b){ return b.ts-a.ts; });
+      document.getElementById('openCount').textContent = open.length;
+      document.getElementById('mineCount').textContent = mine2.length;
+      document.getElementById('openOrders').innerHTML = open.length
+        ? open.map(function(o){ return orderHTML(o, '<button class="btn btn-main btn-sm" data-take="'+o.id+'">Ανάλαβε</button>'); }).join('')
+        : '<div class="empty">Καμία ανοιχτή παραγγελία αυτή τη στιγμή.</div>';
+      document.getElementById('myOrders').innerHTML = mine2.length
+        ? mine2.map(function(o){
+            var act = o.status==='taken' ? '<button class="btn btn-ok btn-sm" data-done="'+o.id+'">Παραδόθηκε ✓</button>' : badge(o);
+            return orderHTML(o, act);
+          }).join('')
+        : '<div class="empty">Δεν έχεις αναλάβει καμία παράδοση.</div>';
+    }
+  }
+
+  /* --- events --- */
+  document.getElementById('personas').addEventListener('click', function(e){
+    var b = e.target.closest('.persona');
+    if(!b) return;
+    document.querySelectorAll('.persona').forEach(function(x){ x.classList.remove('active'); });
+    b.classList.add('active');
+    role = b.dataset.role; me = b.dataset.id;
+    render();
+  });
+
+  document.getElementById('postBtn').addEventListener('click', function(){
+    var addr = document.getElementById('fAddr').value.trim();
+    var desc = document.getElementById('fDesc').value.trim();
+    if(!addr || !desc){ toast('Συμπλήρωσε διεύθυνση και περιγραφή'); return; }
+    var amount = parseFloat((document.getElementById('fAmount').value || '0').replace(',', '.')) || 0;
+    var nextId = orders.reduce(function(m,o){ return Math.max(m,o.id); }, 0) + 1;
+    orders.push({
+      id: nextId, store: me, addr: addr, desc: desc, amount: amount,
+      pay: document.getElementById('fPay').value, status: 'open', courier: null, ts: Date.now()
+    });
+    document.getElementById('fAddr').value = '';
+    document.getElementById('fDesc').value = '';
+    document.getElementById('fAmount').value = '';
+    sync();
+    toast('✓ Η παραγγελία δημοσιεύτηκε στους διανομείς');
+  });
+
+  document.getElementById('courierView').addEventListener('click', function(e){
+    var take = e.target.closest('[data-take]');
+    var done = e.target.closest('[data-done]');
+    if(take){
+      var o = orders.find(function(x){ return x.id === +take.dataset.take; });
+      if(o && o.status==='open'){ o.status='taken'; o.courier=me; sync(); toast('Ανέλαβες την παραγγελία — καλό δρόμο!'); }
+    } else if(done){
+      var o2 = orders.find(function(x){ return x.id === +done.dataset.done; });
+      if(o2 && o2.courier===me){ o2.status='done'; sync(); toast('✓ Παραδόθηκε!'); }
+    }
+  });
+
+  document.getElementById('resetBtn').addEventListener('click', function(){
+    if(confirm('Επαναφορά των demo δεδομένων;')){
+      orders = seed(); sync(); toast('Τα δεδομένα επανήλθαν');
+    }
+  });
+
+  /* καθάρισμα παλιών done > 24h (όπως το "σβήσιμο στο τέλος της ημέρας") */
+  orders = orders.filter(function(o){ return !(o.status==='done' && Date.now()-o.ts > 24*3600000); });
+
+  render();
+})();
+</script>
+</body>
+</html>
