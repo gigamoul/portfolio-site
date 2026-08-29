@@ -1,0 +1,1088 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ΤΟ ΟΝΟΜΑ ΣΟΥ — Marketing sites, Custom CMS &amp; E-shops</title>
+<meta name="description" content="Σχεδιάζω και αναπτύσσω marketing sites, custom CMS και e-shops. Γρήγορα, καθαρά, φτιαγμένα να φέρνουν πελάτες.">
+
+<!--
+  ========================================================
+  ΤΙ ΝΑ ΑΛΛΑΞΕΙΣ (Ctrl+F):
+  1. "ΤΟ ΟΝΟΜΑ ΣΟΥ"  -> brand (title, logo, footer)
+  2. "ΕΡΓΟ 0"        -> πραγματικά έργα + links + screenshots
+  3. data-target="…" -> τα νούμερα στα στατιστικά
+  4. "mailto:" / "tel:" / "wa.me" -> στοιχεία επικοινωνίας
+  ========================================================
+-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --void:#050508;
+  --ink:#f4f2ec;
+  --muted:#a8a6b4;
+  --gold:#e6c684;
+  --gold-deep:#c29a4e;
+  --plat:#e9ecf4;
+  --rose:#e8a98e;
+  --line:rgba(230,198,132,.16);
+  --line-soft:rgba(200,200,220,.10);
+  --glass:rgba(16,15,22,.55);
+  --display:'Playfair Display',Georgia,serif;
+  --body:'Inter',system-ui,sans-serif;
+  --mono:'JetBrains Mono',ui-monospace,monospace;
+  --maxw:1180px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--void);
+  color:var(--ink);
+  font-family:var(--body);
+  line-height:1.65;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+body::before{
+  content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(760px 540px at 80% 8%, rgba(230,198,132,.10), transparent 65%),
+    radial-gradient(640px 640px at 8% 60%, rgba(180,190,230,.07), transparent 65%),
+    radial-gradient(900px 500px at 50% 110%, rgba(230,198,132,.06), transparent 65%);
+}
+#scene{position:fixed;inset:0;z-index:1;pointer-events:none}
+.page{position:relative;z-index:2}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+
+/* ---------- typography ---------- */
+h1,h2,h3{font-family:var(--display);font-weight:700;letter-spacing:-.015em;line-height:1.06}
+h1{font-size:clamp(2.9rem,7.2vw,5.4rem);font-weight:800}
+h2{font-size:clamp(2rem,4.4vw,3.3rem)}
+h3{font-size:1.34rem}
+p{color:var(--muted)}
+.eyebrow{
+  font-family:var(--mono);font-size:.66rem;letter-spacing:.28em;text-transform:uppercase;
+  color:var(--gold);display:flex;align-items:center;gap:12px;margin-bottom:24px;
+}
+.eyebrow::before{content:'';width:30px;height:1px;background:linear-gradient(90deg,var(--gold),transparent)}
+.grad{
+  background:linear-gradient(100deg,#f7e7bd,var(--gold) 42%,#fdfbf4 90%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+
+/* ---------- nav ---------- */
+.nav{
+  position:fixed;top:16px;left:50%;transform:translateX(-50%);z-index:50;
+  width:calc(100% - 32px);max-width:var(--maxw);
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+  padding:11px 12px 11px 22px;border-radius:100px;
+  background:rgba(10,9,14,.55);border:1px solid var(--line-soft);
+  backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+  transition:background .3s,border-color .3s;
+}
+.nav.solid{background:rgba(8,7,12,.9);border-color:var(--line)}
+.brand{display:flex;align-items:center;gap:11px;font-family:var(--display);font-weight:700;font-size:1.04rem;color:var(--ink);text-decoration:none;letter-spacing:.01em}
+.brand i{width:10px;height:10px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#fff7e0,var(--gold) 55%,var(--gold-deep));box-shadow:0 0 16px rgba(230,198,132,.85)}
+.navlinks{display:flex;gap:30px}
+.navlinks a{color:var(--muted);text-decoration:none;font-size:.9rem;transition:color .2s}
+.navlinks a:hover{color:var(--gold)}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:9px;
+  padding:13px 26px;border-radius:100px;font-family:var(--body);font-weight:600;font-size:.92rem;
+  text-decoration:none;border:1px solid transparent;cursor:pointer;transition:transform .2s,box-shadow .25s,background .25s,border-color .25s;
+}
+.btn-main{background:linear-gradient(100deg,#f2ddab,var(--gold) 45%,var(--gold-deep));color:#141007;box-shadow:0 8px 32px rgba(230,198,132,.28)}
+.btn-main:hover{transform:translateY(-2px);box-shadow:0 14px 44px rgba(230,198,132,.45)}
+.btn-ghost{border-color:rgba(230,198,132,.28);color:var(--ink);background:rgba(255,250,235,.02)}
+.btn-ghost:hover{border-color:var(--gold);background:rgba(230,198,132,.08)}
+.nav .btn{padding:10px 21px;font-size:.85rem}
+.burger{display:none;background:none;border:0;color:var(--ink);font-size:1.4rem;cursor:pointer;padding:4px 10px}
+
+/* ---------- hero ---------- */
+.hero{min-height:100svh;display:flex;align-items:center;padding:130px 0 70px}
+.hero-in{max-width:730px}
+.hero h1{margin-bottom:28px}
+.hero .lead{font-size:clamp(1.05rem,1.9vw,1.22rem);max-width:560px;margin-bottom:40px}
+.cta-row{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:56px}
+.hero-meta{display:flex;gap:36px;flex-wrap:wrap;font-family:var(--mono);font-size:.7rem;letter-spacing:.12em;color:rgba(230,198,132,.88);text-transform:uppercase;text-shadow:0 0 14px rgba(230,198,132,.3)}
+.hero-meta span{display:flex;align-items:center;gap:9px}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--gold);box-shadow:0 0 12px var(--gold);animation:pulse 2.6s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+
+/* ---------- marquee ---------- */
+.strip{border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft);padding:22px 0;overflow:hidden;background:rgba(8,7,12,.45)}
+.track{display:flex;gap:56px;width:max-content;animation:slide 36s linear infinite}
+.track span{font-family:var(--mono);font-size:.8rem;letter-spacing:.16em;color:rgba(210,205,190,.45);white-space:nowrap}
+@keyframes slide{to{transform:translateX(-50%)}}
+
+/* ---------- sections ---------- */
+.sec{padding:135px 0}
+.sec-head{max-width:640px;margin-bottom:66px}
+.sec-head p{margin-top:18px;font-size:1.05rem}
+
+/* ---------- services ---------- */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.card{
+  position:relative;padding:36px 32px 32px;border-radius:20px;overflow:hidden;
+  background:var(--glass);border:1px solid var(--line-soft);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  transition:transform .55s cubic-bezier(.16,.8,.3,1),border-color .45s;
+}
+.card::before{
+  content:'';position:absolute;inset:0 0 auto;height:1px;
+  background:linear-gradient(90deg,transparent,var(--k,var(--gold)),transparent);
+  opacity:.55;transition:opacity .35s;
+}
+.card::after{
+  content:'';position:absolute;inset:0;border-radius:20px;opacity:0;transition:opacity .35s;
+  background:radial-gradient(380px 220px at 50% 0%,var(--c,rgba(230,198,132,.14)),transparent 70%);
+}
+.card:hover{transform:translateY(-7px);border-color:rgba(230,198,132,.3)}
+.card:hover::after{opacity:1}
+.card:hover::before{opacity:1}
+.card > *{position:relative;z-index:1}
+.idx{font-family:var(--mono);font-size:.7rem;letter-spacing:.22em;color:var(--k,var(--gold));margin-bottom:22px;display:block}
+.card h3{margin-bottom:12px}
+.card .sub{font-size:.94rem;margin-bottom:24px}
+.card ul{list-style:none;display:flex;flex-direction:column;gap:12px}
+.card li{font-size:.9rem;color:var(--muted);padding-left:24px;position:relative}
+.card li::before{content:'';position:absolute;left:0;top:.64em;width:10px;height:1px;background:var(--k,var(--gold))}
+
+/* ---------- stats ---------- */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft);padding:56px 0}
+.stat b{display:block;font-family:var(--display);font-size:clamp(2.1rem,4.4vw,3.2rem);font-weight:800;letter-spacing:-.02em;line-height:1}
+.stat b .grad{background:linear-gradient(100deg,#f7e7bd,var(--gold) 60%,#fdfbf4);-webkit-background-clip:text;background-clip:text}
+.stat span{font-family:var(--mono);font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-top:13px;display:block}
+
+/* ---------- work ---------- */
+.work{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.proj{
+  border-radius:20px;border:1px solid var(--line-soft);overflow:hidden;background:var(--glass);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  text-decoration:none;color:inherit;display:block;position:relative;z-index:1;
+  transition:transform .55s cubic-bezier(.16,.8,.3,1),border-color .45s,box-shadow .45s;
+}
+.proj:hover{transform:translateY(-6px) scale(1.045);border-color:rgba(230,198,132,.42);box-shadow:0 26px 60px rgba(0,0,0,.6);z-index:2}
+.proj .shot::after{content:'';position:absolute;inset:0;background:radial-gradient(340px 200px at 50% 50%,rgba(230,198,132,.16),transparent 72%);opacity:0;transition:opacity .55s}
+.proj:hover .shot::after{opacity:1}
+.shot{aspect-ratio:16/10;background:linear-gradient(150deg,#16141e,#0a0910 60%);position:relative;display:grid;place-items:center;border-bottom:1px solid var(--line-soft)}
+.shot::before{content:'';position:absolute;inset:0;background:radial-gradient(320px 190px at 30% 20%,rgba(230,198,132,.16),transparent 70%)}
+.shot em{font-family:var(--mono);font-style:normal;font-size:.7rem;letter-spacing:.22em;color:rgba(210,205,190,.4);position:relative;text-align:center;padding:0 20px}
+.proj-body{padding:26px 28px 30px;display:flex;justify-content:space-between;align-items:flex-start;gap:16px}
+.tag{font-family:var(--mono);font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(230,198,132,.32);padding:5px 12px;border-radius:100px;white-space:nowrap}
+.proj-body h3{margin-bottom:7px;font-size:1.22rem}
+.proj-body p{font-size:.9rem}
+
+/* ---------- process ---------- */
+.steps{display:grid;grid-template-columns:repeat(4,1fr)}
+.step{padding:32px 28px 32px 0;border-top:1px solid var(--line-soft);position:relative}
+.step::before{content:'';position:absolute;top:-3px;left:0;width:5px;height:5px;border-radius:50%;background:var(--gold);box-shadow:0 0 12px var(--gold)}
+.step b{font-family:var(--mono);font-size:.7rem;letter-spacing:.22em;color:var(--gold);display:block;margin-bottom:17px}
+.step h3{font-size:1.12rem;margin-bottom:11px}
+.step p{font-size:.9rem}
+
+/* ---------- cta ---------- */
+.cta{
+  text-align:center;padding:100px 32px;border-radius:28px;position:relative;overflow:hidden;
+  background:linear-gradient(155deg,rgba(230,198,132,.10),rgba(20,18,28,.5) 50%,rgba(233,236,244,.05));
+  border:1px solid var(--line);
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+}
+.cta::before{
+  content:'';position:absolute;inset:0 0 auto;height:1px;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent);
+}
+.cta h2{margin-bottom:22px}
+.cta p{max-width:480px;margin:0 auto 38px;font-size:1.05rem}
+.cta .cta-row{justify-content:center;margin-bottom:0}
+
+/* ---------- footer ---------- */
+footer{border-top:1px solid var(--line-soft);padding:46px 0;margin-top:110px}
+.foot{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
+.foot p,.foot a{font-size:.84rem;color:var(--muted);text-decoration:none}
+.foot a:hover{color:var(--gold)}
+.foot nav{display:flex;gap:24px}
+
+/* ---------- τίτλοι λέξη-λέξη ---------- */
+.w{display:inline-block;opacity:0;transform:translateY(0.5em) rotate(2deg);transition:opacity .9s cubic-bezier(.16,.8,.3,1),transform .9s cubic-bezier(.16,.8,.3,1)}
+.in .w,.w.in{opacity:1;transform:none}
+
+/* ---------- κάρτες εναλλάξ ---------- */
+.rv.from-left{transform:translateX(-38px) translateY(18px)}
+.rv.from-right{transform:translateX(38px) translateY(18px)}
+.rv.from-left.in,.rv.from-right.in{transform:none}
+
+/* ---------- γράψιμο λιστών ---------- */
+.card li{opacity:0;transform:translateX(-10px);transition:opacity .6s ease,transform .6s cubic-bezier(.16,.8,.3,1)}
+.card.in li{opacity:1;transform:none}
+
+/* ---------- χρυσό τόξο μετρητών ---------- */
+.stat{position:relative}
+.stat .ring{position:absolute;top:-14px;left:-10px;width:74px;height:74px;pointer-events:none;opacity:.75}
+.stat .ring circle{fill:none;stroke-width:1.4;transform:rotate(-90deg);transform-origin:50% 50%}
+.stat .ring .bg{stroke:rgba(230,198,132,.12)}
+.stat .ring .fg{stroke:var(--gold);stroke-linecap:round;filter:drop-shadow(0 0 5px rgba(230,198,132,.6))}
+
+/* ---------- σκόνη κέρσορα ---------- */
+.dustc{position:fixed;inset:0;z-index:130;pointer-events:none}
+
+/* ---------- preloader ---------- */
+.loader{position:fixed;inset:0;z-index:200;background:var(--void);display:grid;place-items:center;transition:opacity .9s ease,visibility .9s}
+.loader span{font-family:var(--display);font-weight:800;font-size:clamp(1.7rem,4.2vw,2.8rem);background:linear-gradient(100deg,#f7e7bd,var(--gold) 45%,#fdfbf4);-webkit-background-clip:text;background-clip:text;color:transparent;opacity:0;animation:brandIn 1.5s ease .15s forwards}
+.loader.done{opacity:0;visibility:hidden}
+@keyframes brandIn{from{opacity:0;transform:translateY(14px);letter-spacing:.16em}to{opacity:1;transform:none;letter-spacing:.01em}}
+
+/* ---------- κόκκος φιλμ ---------- */
+.grain{position:fixed;inset:-60%;z-index:120;pointer-events:none;opacity:.06;mix-blend-mode:overlay;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='260' height='260'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");animation:grainShift 9s steps(10) infinite}
+@keyframes grainShift{0%{transform:translate(0,0)}10%{transform:translate(-3%,2%)}20%{transform:translate(2%,-3%)}30%{transform:translate(-1%,3%)}40%{transform:translate(3%,1%)}50%{transform:translate(-2%,-2%)}60%{transform:translate(1%,3%)}70%{transform:translate(3%,-1%)}80%{transform:translate(-3%,-3%)}90%{transform:translate(2%,2%)}100%{transform:translate(0,0)}}
+
+/* ---------- μπάρα προόδου scroll ---------- */
+.progress{position:fixed;top:0;left:0;right:0;height:2px;z-index:150;background:linear-gradient(90deg,#f2ddab,var(--gold),var(--gold-deep));transform:scaleX(0);transform-origin:left;box-shadow:0 0 10px rgba(230,198,132,.5)}
+
+/* ---------- 3D tilt ---------- */
+.cards,.work{perspective:1000px}
+
+/* ---------- reveal ---------- */
+.rv{opacity:0;transform:translateY(30px);transition:opacity 1.2s cubic-bezier(.16,.8,.3,1),transform 1.2s cubic-bezier(.16,.8,.3,1)}
+.rv.in{opacity:1;transform:none}
+
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:6px}
+
+/* ---------- responsive ---------- */
+@media(max-width:900px){
+  .cards,.work,.stats{grid-template-columns:repeat(2,1fr)}
+  .steps{grid-template-columns:repeat(2,1fr)}
+  .navlinks{display:none}
+  .burger{display:block}
+  .nav.open{border-radius:22px;flex-wrap:wrap}
+  .nav.open .navlinks{display:flex;flex-direction:column;width:100%;gap:6px;padding:14px 8px 8px;border-top:1px solid var(--line-soft);margin-top:6px}
+  .sec{padding:94px 0}
+}
+@media(max-width:560px){
+  .cards,.work,.steps{grid-template-columns:1fr}
+  .stats{gap:32px 18px}
+  .cta{padding:66px 22px;border-radius:22px}
+  .nav .btn{display:none}
+  .nav.open .btn{display:inline-flex;width:100%;margin-top:8px}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .track{animation:none}
+  .rv{opacity:1;transform:none;transition:none}
+  .dot{animation:none}
+  .grain{animation:none}
+  .loader span{animation:none;opacity:1}
+  .w{opacity:1;transform:none;transition:none}
+  .card li{opacity:1;transform:none;transition:none}
+  .rv.from-left,.rv.from-right{transform:none}
+}
+</style>
+</head>
+<body>
+
+<div class="loader" id="loader"><span>ΤΟ ΟΝΟΜΑ ΣΟΥ</span></div>
+<div class="grain" aria-hidden="true"></div>
+<canvas class="dustc" id="dustc" aria-hidden="true"></canvas>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<canvas id="scene"></canvas>
+
+<div class="page">
+
+<nav class="nav" id="nav">
+  <a href="#top" class="brand"><i></i>ΤΟ ΟΝΟΜΑ ΣΟΥ</a>
+  <div class="navlinks">
+    <a href="#services">Υπηρεσίες</a>
+    <a href="#work">Έργα</a>
+    <a href="#process">Πώς δουλεύω</a>
+    <a href="#contact">Επικοινωνία</a>
+  </div>
+  <a href="#contact" class="btn btn-main">Ζήτα προσφορά</a>
+  <button class="burger" id="burger" aria-label="Μενού">☰</button>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap hero-in">
+    <div class="eyebrow rv">Αθήνα · Web studio</div>
+    <h1 class="rv">Το site σου,<br><span class="grad">σε άλλο επίπεδο.</span></h1>
+    <p class="lead rv">Marketing sites, custom CMS και e-shops. Φορτώνουν γρήγορα, δείχνουν πολυτελή και είναι φτιαγμένα για να τραβούν πελάτες — όχι απλώς να υπάρχουν.</p>
+    <div class="cta-row rv">
+      <a href="#contact" class="btn btn-main">Ζήτα προσφορά →</a>
+      <a href="#work" class="btn btn-ghost">Δες τα έργα</a>
+    </div>
+    <div class="hero-meta rv">
+      <span><i class="dot"></i>Δέχομαι νέα έργα</span>
+      <span>Παράδοση από 2 εβδομάδες</span>
+      <span>Υποστήριξη μετά το λανσάρισμα</span>
+    </div>
+  </div>
+</header>
+
+<div class="strip rv">
+  <div class="track" id="track">
+    <span>WordPress</span><span>WooCommerce</span><span>Shopify</span><span>Next.js</span><span>React</span><span>Node.js</span><span>Vercel</span><span>Stripe</span><span>Viva Wallet</span><span>Figma</span><span>Supabase</span><span>PHP / MySQL</span>
+  </div>
+</div>
+
+<section class="sec" id="services">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div class="eyebrow">Υπηρεσίες</div>
+      <h2>Τρεις τρόποι να είσαι online</h2>
+      <p>Διάλεξε αυτό που ταιριάζει στη δουλειά σου. Αν δεν είσαι σίγουρος, στείλε μου δυο γραμμές για την επιχείρησή σου και σου λέω εγώ.</p>
+    </div>
+
+    <div class="cards">
+      <article class="card rv" style="--k:var(--gold);--c:rgba(230,198,132,.14)">
+        <span class="idx">01 — Marketing site</span>
+        <h3>Η βιτρίνα σου</h3>
+        <p class="sub">Ένα site που εξηγεί τι κάνεις σε 5 δευτερόλεπτα και σε κάνει να δείχνεις μεγαλύτερος απ' ό,τι είσαι.</p>
+        <ul>
+          <li>Σχεδιασμός από το μηδέν πάνω στο brand σου</li>
+          <li>Σελίδες που οδηγούν σε κλήση ή φόρμα</li>
+          <li>Ταχύτητα &amp; τεχνικό SEO από την αρχή</li>
+          <li>Google Analytics και παρακολούθηση φορμών</li>
+        </ul>
+      </article>
+
+      <article class="card rv" style="--k:var(--plat);--c:rgba(233,236,244,.12)">
+        <span class="idx">02 — Custom CMS</span>
+        <h3>Στα χέρια σου</h3>
+        <p class="sub">Δικό σου σύστημα διαχείρισης, χτισμένο γύρω από το πώς δουλεύεις — χωρίς περιττά κουμπιά.</p>
+        <ul>
+          <li>Πίνακας διαχείρισης στα ελληνικά</li>
+          <li>Αλλάζεις κείμενα και φωτογραφίες χωρίς κώδικα</li>
+          <li>Ρόλοι και δικαιώματα ανά χρήστη</li>
+          <li>Blog, καταχωρήσεις, ραντεβού, ό,τι χρειάζεσαι</li>
+        </ul>
+      </article>
+
+      <article class="card rv" style="--k:var(--rose);--c:rgba(232,169,142,.13)">
+        <span class="idx">03 — E-shop</span>
+        <h3>Πουλάς online</h3>
+        <p class="sub">Από το πρώτο προϊόν μέχρι το voucher του courier, στημένο για να μη χάνεις παραγγελίες.</p>
+        <ul>
+          <li>Κάρτα, IRIS, PayPal, αντικαταβολή</li>
+          <li>Απόθεμα, παραλλαγές και μαζικές εισαγωγές</li>
+          <li>Σύνδεση με courier και εκτύπωση voucher</li>
+          <li>Κουπόνια, προσφορές, εγκαταλελειμμένα καλάθια</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="sec" style="padding-top:0">
+  <div class="wrap">
+    <div class="stats">
+      <!-- ΑΛΛΑΞΕ τα data-target με τα δικά σου νούμερα -->
+      <div class="stat rv"><b><span class="num grad" data-target="24">0</span>+</b><span>Έργα παραδομένα</span></div>
+      <div class="stat rv"><b><span class="num grad" data-target="6">0</span></b><span>Χρόνια εμπειρίας</span></div>
+      <div class="stat rv"><b><span class="num grad" data-target="95">0</span>+</b><span>PageSpeed score</span></div>
+      <div class="stat rv"><b><span class="num grad" data-target="14">0</span></b><span>Μέρες μέχρι λανσάρισμα</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="work">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div class="eyebrow">Έργα</div>
+      <h2>Δουλειές που έχω παραδώσει</h2>
+      <p>Κάθε έργο ξεκίνησε από ένα πρόβλημα: λίγες κλήσεις, δύσκολες ενημερώσεις, χαμένες παραγγελίες.</p>
+    </div>
+    <div class="work">
+      <!-- ΑΝΤΙΚΑΤΕΣΤΗΣΕ τα 4 έργα με τα δικά σου (βάλε <img> στη θέση του .shot) -->
+      <a href="#" class="proj rv"><div class="shot"><em>ΕΡΓΟ 01 · ΒΑΛΕ SCREENSHOT</em></div><div class="proj-body"><div><h3>Όνομα έργου</h3><p>Δύο γραμμές: τι χρειαζόταν ο πελάτης και τι άλλαξε μετά.</p></div><span class="tag">Marketing</span></div></a>
+      <a href="#" class="proj rv"><div class="shot"><em>ΕΡΓΟ 02 · ΒΑΛΕ SCREENSHOT</em></div><div class="proj-body"><div><h3>Όνομα έργου</h3><p>Δύο γραμμές: τι χρειαζόταν ο πελάτης και τι άλλαξε μετά.</p></div><span class="tag">E-shop</span></div></a>
+      <a href="#" class="proj rv"><div class="shot"><em>ΕΡΓΟ 03 · ΒΑΛΕ SCREENSHOT</em></div><div class="proj-body"><div><h3>Όνομα έργου</h3><p>Δύο γραμμές: τι χρειαζόταν ο πελάτης και τι άλλαξε μετά.</p></div><span class="tag">Custom CMS</span></div></a>
+      <a href="#" class="proj rv"><div class="shot"><em>ΕΡΓΟ 04 · ΒΑΛΕ SCREENSHOT</em></div><div class="proj-body"><div><h3>Όνομα έργου</h3><p>Δύο γραμμές: τι χρειαζόταν ο πελάτης και τι άλλαξε μετά.</p></div><span class="tag">Web app</span></div></a>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="process">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div class="eyebrow">Πώς δουλεύω</div>
+      <h2>Τέσσερα βήματα, χωρίς εκπλήξεις</h2>
+    </div>
+    <div class="steps">
+      <div class="step rv"><b>01</b><h3>Κουβέντα</h3><p>Μου λες τι κάνεις και τι θες να πετύχεις. Σου λέω τι χρειάζεται και τι όχι.</p></div>
+      <div class="step rv"><b>02</b><h3>Πρόταση</h3><p>Παίρνεις γραπτή τιμή, χρονοδιάγραμμα και τι ακριβώς περιλαμβάνει.</p></div>
+      <div class="step rv"><b>03</b><h3>Σχεδιασμός &amp; κατασκευή</h3><p>Βλέπεις το design πριν γραφτεί κώδικας και δοκιμάζεις το site πριν βγει.</p></div>
+      <div class="step rv"><b>04</b><h3>Λανσάρισμα</h3><p>Ανεβαίνει, μετράμε, διορθώνουμε. Και μετά είμαι εδώ για ό,τι χρειαστεί.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="contact">
+  <div class="wrap">
+    <div class="cta rv">
+      <h2>Πες μου τι θέλεις να φτιάξουμε</h2>
+      <p>Στείλε μου δυο γραμμές για την επιχείρησή σου. Απαντάω αυθημερόν με μια πρώτη εκτίμηση, χωρίς δέσμευση.</p>
+      <div class="cta-row">
+        <!-- ΑΛΛΑΞΕ τα στοιχεία επικοινωνίας -->
+        <a href="mailto:hello@example.com" class="btn btn-main">Στείλε email</a>
+        <a href="https://wa.me/30690XXXXXXX" class="btn btn-ghost">WhatsApp</a>
+        <a href="tel:+30690XXXXXXX" class="btn btn-ghost">Κάλεσε με</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot rv">
+    <p>© <span id="yr">2026</span> ΤΟ ΟΝΟΜΑ ΣΟΥ — Αθήνα</p>
+    <nav>
+      <a href="#services">Υπηρεσίες</a>
+      <a href="#work">Έργα</a>
+      <a href="#contact">Επικοινωνία</a>
+    </nav>
+  </div>
+</footer>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(function(){
+  'use strict';
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var mobile = window.innerWidth < 760;
+
+  /* ---------------- UI ---------------- */
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  var nav = document.getElementById('nav');
+  document.getElementById('burger').addEventListener('click', function(){ nav.classList.toggle('open'); });
+  nav.querySelectorAll('.navlinks a').forEach(function(a){
+    a.addEventListener('click', function(){ nav.classList.remove('open'); });
+  });
+
+  var track = document.getElementById('track');
+  track.innerHTML += track.innerHTML;
+
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }});
+  },{threshold:.12, rootMargin:'0px 0px -60px'});
+  document.querySelectorAll('.rv').forEach(function(el,i){
+    el.style.transitionDelay = (i % 4) * 100 + 'ms';
+    io.observe(el);
+  });
+  /* το hero ξεδιπλώνεται σε σειρά μόλις φύγει ο preloader */
+  document.querySelectorAll('.hero .rv, .strip.rv').forEach(function(el,i){
+    el.style.transitionDelay = (1500 + i * 130) + 'ms';
+  });
+
+  var counted = new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(!e.isIntersecting) return;
+      counted.unobserve(e.target);
+      var el = e.target, target = +el.dataset.target, t0 = performance.now(), dur = 1400;
+      var stat = el.closest('.stat'), fg = stat ? stat.querySelector('.ring .fg') : null;
+      var C = 2 * Math.PI * 34;
+      if(fg){ fg.style.strokeDasharray = C; fg.style.strokeDashoffset = C; }
+      if(reduce){ el.textContent = target; if(fg) fg.style.strokeDashoffset = C * 0.12; return; }
+      (function step(now){
+        var p = Math.min((now - t0) / dur, 1);
+        var e2 = 1 - Math.pow(1 - p, 3);
+        el.textContent = Math.round(target * e2);
+        if(fg) fg.style.strokeDashoffset = C * (1 - e2 * 0.88);
+        if(p < 1) requestAnimationFrame(step);
+      })(t0);
+    });
+  },{threshold:.6});
+  document.querySelectorAll('.num').forEach(function(el){ counted.observe(el); });
+
+  /* ---------------- premium extras ---------------- */
+  /* preloader: το όνομα εμφανίζεται, μετά η σκηνή αποκαλύπτεται */
+  var _lt0 = performance.now();
+  function hideLoader(){
+    var el = document.getElementById('loader');
+    if(!el || el.classList.contains('done')) return;
+    var wait = Math.max(0, 1700 - (performance.now() - _lt0));
+    setTimeout(function(){ el.classList.add('done'); }, wait);
+  }
+  window.addEventListener('load', hideLoader);
+  setTimeout(hideLoader, 3200);   /* δίχτυ ασφαλείας αν κάτι αργήσει */
+
+  /* μπάρα προόδου scroll */
+  var progressEl = document.getElementById('progress');
+  addEventListener('scroll', function(){
+    var h = document.body.scrollHeight - innerHeight;
+    progressEl.style.transform = 'scaleX(' + (h > 0 ? window.scrollY / h : 0) + ')';
+  }, {passive:true});
+
+  var touch = ('ontouchstart' in window);
+
+  /* μαγνητικά κουμπιά — τραβιούνται προς τον κέρσορα */
+  if(!touch && !reduce){
+    document.querySelectorAll('.btn').forEach(function(b){
+      b.addEventListener('pointermove', function(e){
+        var r = b.getBoundingClientRect();
+        var dx = e.clientX - (r.left + r.width/2);
+        var dy = e.clientY - (r.top + r.height/2);
+        b.style.transform = 'translate(' + (dx*0.16).toFixed(1) + 'px,' + (dy*0.22).toFixed(1) + 'px)';
+      });
+      b.addEventListener('pointerleave', function(){ b.style.transform = ''; });
+    });
+  }
+
+  /* 3D κλίση καρτών προς το ποντίκι */
+  if(!touch && !reduce){
+    document.querySelectorAll('.card, .proj').forEach(function(c){
+      var zoom = c.classList.contains('proj') ? 1.045 : 1.02;
+      c.addEventListener('pointermove', function(e){
+        var r = c.getBoundingClientRect();
+        var px = (e.clientX - r.left) / r.width - 0.5;
+        var py = (e.clientY - r.top) / r.height - 0.5;
+        c.style.transform = 'translateY(-6px) scale(' + zoom + ') rotateX(' + (-py*7).toFixed(2) + 'deg) rotateY(' + (px*7).toFixed(2) + 'deg)';
+      });
+      c.addEventListener('pointerleave', function(){ c.style.transform = ''; });
+    });
+  }
+
+  /* ---------------- εφέ κειμένου & UI ---------------- */
+  /* τίτλοι: σπάνε σε λέξεις που ανεβαίνουν διαδοχικά */
+  document.querySelectorAll('h1, .sec-head h2, .cta h2').forEach(function(h){
+    var html = h.innerHTML.split('<br>').map(function(line){
+      return line.trim().split(/\s+/).map(function(w){ return '<span class="w">' + w + '</span>'; }).join(' ');
+    }).join('<br>');
+    h.innerHTML = html;
+    h.querySelectorAll('.w').forEach(function(w, i){ w.style.transitionDelay = (i * 85) + 'ms'; });
+    h.classList.add('rv-words');
+  });
+  var wordIO = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); wordIO.unobserve(e.target); }});
+  },{threshold:.2, rootMargin:'0px 0px -50px'});
+  document.querySelectorAll('.rv-words').forEach(function(h){ wordIO.observe(h); });
+  /* ο τίτλος του hero περιμένει τον preloader */
+  document.querySelectorAll('.hero h1 .w').forEach(function(w, i){ w.style.transitionDelay = (1650 + i * 85) + 'ms'; });
+
+  /* κάρτες: μπαίνουν εναλλάξ αριστερά/δεξιά */
+  document.querySelectorAll('.cards .card, .work .proj').forEach(function(c, i){
+    c.classList.add(i % 2 === 0 ? 'from-left' : 'from-right');
+  });
+
+  /* λίστες υπηρεσιών: γράφονται μία-μία */
+  document.querySelectorAll('.card ul').forEach(function(ul){
+    ul.querySelectorAll('li').forEach(function(li, i){ li.style.transitionDelay = (260 + i * 120) + 'ms'; });
+  });
+
+  /* μετρητές: χρυσό τόξο που γεμίζει γύρω τους */
+  document.querySelectorAll('.stat').forEach(function(st){
+    var svg = document.createElementNS('http://www.w3.org/2000/svg','svg');
+    svg.setAttribute('class','ring');
+    svg.setAttribute('viewBox','0 0 74 74');
+    svg.innerHTML = '<circle class="bg" cx="37" cy="37" r="34"></circle><circle class="fg" cx="37" cy="37" r="34"></circle>';
+    st.appendChild(svg);
+  });
+
+  /* σκόνη κέρσορα */
+  if(!touch && !reduce){
+    var dc = document.getElementById('dustc'), dctx = dc.getContext('2d'), dust = [];
+    function sizeDust(){ dc.width = innerWidth; dc.height = innerHeight; }
+    sizeDust();
+    addEventListener('resize', sizeDust);
+    addEventListener('pointermove', function(e){
+      if(dust.length > 90) return;
+      for(var i=0;i<2;i++){
+        dust.push({
+          x:e.clientX + (Math.random()-0.5)*10,
+          y:e.clientY + (Math.random()-0.5)*10,
+          vx:(Math.random()-0.5)*0.35,
+          vy:(Math.random()-0.5)*0.35 - 0.12,
+          life:1, r:0.7 + Math.random()*1.5
+        });
+      }
+    }, {passive:true});
+    (function dustLoop(){
+      requestAnimationFrame(dustLoop);
+      dctx.clearRect(0,0,dc.width,dc.height);
+      for(var i=dust.length-1;i>=0;i--){
+        var p = dust[i];
+        p.x += p.vx; p.y += p.vy; p.life -= 0.014;
+        if(p.life <= 0){ dust.splice(i,1); continue; }
+        dctx.beginPath();
+        dctx.arc(p.x, p.y, p.r * p.life, 0, 6.2832);
+        dctx.fillStyle = 'rgba(230,198,132,' + (p.life * 0.5).toFixed(3) + ')';
+        dctx.fill();
+      }
+    })();
+  }
+
+  /* ---------------- ομαλό (smooth) scroll ---------------- */
+  var smoothOn = !touch && !reduce && innerWidth > 900;
+  if(smoothOn){
+    var sTarget = window.scrollY, sCurrent = sTarget, sRunning = false;
+    var maxScroll = function(){ return document.body.scrollHeight - innerHeight; };
+
+    function sLoop(){
+      var diff = sTarget - sCurrent;
+      if(Math.abs(diff) < 0.4){ sCurrent = sTarget; sRunning = false; window.scrollTo(0, sCurrent); return; }
+      sCurrent += diff * 0.085;          /* όσο μικρότερο, τόσο πιο βαρύ/απαλό */
+      window.scrollTo(0, sCurrent);
+      requestAnimationFrame(sLoop);
+    }
+    function kick(){ if(!sRunning){ sRunning = true; requestAnimationFrame(sLoop); } }
+
+    addEventListener('wheel', function(e){
+      if(e.ctrlKey) return;             /* άσε το zoom να δουλέψει */
+      e.preventDefault();
+      sTarget = Math.max(0, Math.min(maxScroll(), sTarget + e.deltaY));
+      kick();
+    }, {passive:false});
+
+    /* ομαλή μετάβαση και στα link του μενού */
+    document.querySelectorAll('a[href^="#"]').forEach(function(a){
+      a.addEventListener('click', function(e){
+        var el = document.querySelector(a.getAttribute('href'));
+        if(!el) return;
+        e.preventDefault();
+        sTarget = Math.max(0, Math.min(maxScroll(), el.getBoundingClientRect().top + window.scrollY - 20));
+        kick();
+      });
+    });
+
+    /* κράτα συγχρονισμένο αν κάποιος σύρει τη μπάρα ή πατήσει πλήκτρα */
+    addEventListener('scroll', function(){
+      if(!sRunning){ sTarget = sCurrent = window.scrollY; }
+    }, {passive:true});
+  }
+
+  /* ---------------- WebGL: BLACK HOLE ---------------- */
+  var canvas = document.getElementById('scene');
+  if(typeof THREE === 'undefined'){ canvas.style.display='none'; return; }
+
+  var renderer = new THREE.WebGLRenderer({canvas:canvas, alpha:true, antialias:!mobile});
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, mobile ? 1.5 : 2));
+  renderer.setSize(innerWidth, innerHeight);
+
+  var scene  = new THREE.Scene();
+  var camera = new THREE.PerspectiveCamera(45, innerWidth/innerHeight, 0.1, 120);
+  camera.position.set(0, 0, 6);
+
+  var noiseGLSL = [
+    'float hash(vec3 p){ return fract(sin(dot(p, vec3(127.1,311.7,74.7)))*43758.5453); }',
+    'float noise(vec3 p){',
+    '  vec3 i=floor(p), f=fract(p); f=f*f*(3.0-2.0*f);',
+    '  float n000=hash(i), n100=hash(i+vec3(1,0,0)), n010=hash(i+vec3(0,1,0)), n110=hash(i+vec3(1,1,0));',
+    '  float n001=hash(i+vec3(0,0,1)), n101=hash(i+vec3(1,0,1)), n011=hash(i+vec3(0,1,1)), n111=hash(i+vec3(1,1,1));',
+    '  return mix(mix(mix(n000,n100,f.x),mix(n010,n110,f.x),f.y), mix(mix(n001,n101,f.x),mix(n011,n111,f.x),f.y), f.z);',
+    '}',
+    'float fbm(vec3 p){ float v=0.0, a=0.5; for(int k=0;k<5;k++){ v+=a*noise(p); p*=2.07; a*=0.5; } return v; }'
+  ].join('\n');
+
+  /* --- starfield: πιο πυκνό & φωτεινό --- */
+  var STARS = mobile ? 2200 : 5200;
+  var pos = new Float32Array(STARS*3), sz = new Float32Array(STARS), ph = new Float32Array(STARS), tint = new Float32Array(STARS);
+  for(var i=0;i<STARS;i++){
+    var r = 15 + Math.random()*30, th = Math.random()*Math.PI*2, ph2 = Math.acos(2*Math.random()-1);
+    pos[i*3]   = r*Math.sin(ph2)*Math.cos(th);
+    pos[i*3+1] = r*Math.sin(ph2)*Math.sin(th);
+    pos[i*3+2] = r*Math.cos(ph2);
+    sz[i] = Math.random()*2.6 + 0.7;
+    ph[i] = Math.random()*Math.PI*2;
+    tint[i] = Math.random();
+  }
+  var sg = new THREE.BufferGeometry();
+  sg.setAttribute('position', new THREE.BufferAttribute(pos,3));
+  sg.setAttribute('aSize', new THREE.BufferAttribute(sz,1));
+  sg.setAttribute('aPhase', new THREE.BufferAttribute(ph,1));
+  sg.setAttribute('aTint', new THREE.BufferAttribute(tint,1));
+
+  var starMat = new THREE.ShaderMaterial({
+    transparent:true, depthWrite:false, blending:THREE.AdditiveBlending,
+    uniforms:{
+      uTime:{value:0}, uDpr:{value:renderer.getPixelRatio()},
+      uHole:{value:new THREE.Vector3(0,0,0)}, uMass:{value:1.0}
+    },
+    vertexShader:[
+      'attribute float aSize; attribute float aPhase; attribute float aTint;',
+      'uniform float uTime, uDpr, uMass; uniform vec3 uHole;',
+      'varying float vA; varying float vT; varying float vLens;',
+      'void main(){',
+      '  vec4 mv = modelViewMatrix * vec4(position,1.0);',
+      /* θέση τρύπας στον ίδιο χώρο */
+      '  vec4 hv = viewMatrix * vec4(uHole, 1.0);',
+      /* ακτινικό διάνυσμα από την τρύπα προς το αστέρι, στο επίπεδο της οθόνης */
+      '  vec2 d = mv.xy - hv.xy;',
+      '  float r = max(length(d), 0.001);',
+      /* βαρυτικός φακός: όσο πιο κοντά, τόσο πιο πολύ σπρώχνεται προς τα έξω (Einstein ring) */
+      '  float bend = uMass / (r*r + 0.35);',
+      '  bend = min(bend, 2.2);',
+      '  bool behind = mv.z < hv.z;',   /* λυγίζουν μόνο όσα είναι ΠΙΣΩ από την τρύπα */
+      '  if(behind){ mv.xy += normalize(d) * bend; }',
+      '  vLens = behind ? clamp(bend*0.8, 0.0, 1.6) : 0.0;',
+      '  vA = 0.62 + 0.38*sin(uTime*1.0 + aPhase);',
+      '  vT = aTint;',
+      '  gl_PointSize = aSize * uDpr * (62.0 / -mv.z) * (1.0 + vLens*0.9);',
+      '  gl_Position = projectionMatrix * mv;',
+      '}'
+    ].join('\n'),
+    fragmentShader:[
+      'varying float vA; varying float vT; varying float vLens;',
+      'void main(){',
+      '  vec2 c = gl_PointCoord - 0.5;',
+      '  float d = length(c);',
+      '  if(d > 0.5) discard;',
+      '  float a = smoothstep(0.5, 0.0, d);',
+      '  vec3 silver = vec3(0.88,0.90,1.0);',
+      '  vec3 gold   = vec3(1.0,0.87,0.62);',
+      '  vec3 col = mix(silver, gold, step(0.72, vT));',
+      /* τα φακοποιημένα αστέρια λάμπουν πιο έντονα, όπως στην πραγματικότητα */
+      '  col += vec3(0.35,0.42,0.55) * vLens;',
+      '  gl_FragColor = vec4(col, a*a*vA*(1.0 + vLens*0.5));',
+      '}'
+    ].join('\n')
+  });
+  var stars = new THREE.Points(sg, starMat);
+  scene.add(stars);
+
+  /* --- λαμπερά αστέρια με ακτίνες (όπως στο screenshot) --- */
+  var SPK = mobile ? 24 : 44;
+  var spos = new Float32Array(SPK*3), ssz = new Float32Array(SPK), sph = new Float32Array(SPK), sti = new Float32Array(SPK);
+  for(var j=0;j<SPK;j++){
+    var rr = 11 + Math.random()*22, th2 = Math.random()*Math.PI*2, pp = Math.acos(2*Math.random()-1);
+    spos[j*3]   = rr*Math.sin(pp)*Math.cos(th2);
+    spos[j*3+1] = rr*Math.sin(pp)*Math.sin(th2);
+    spos[j*3+2] = -Math.abs(rr*Math.cos(pp)) - 2.0;   /* όλα πίσω από τη σκηνή */
+    ssz[j] = 7 + Math.random()*9;
+    sph[j] = Math.random()*Math.PI*2;
+    sti[j] = Math.random();
+  }
+  var spg = new THREE.BufferGeometry();
+  spg.setAttribute('position', new THREE.BufferAttribute(spos,3));
+  spg.setAttribute('aSize', new THREE.BufferAttribute(ssz,1));
+  spg.setAttribute('aPhase', new THREE.BufferAttribute(sph,1));
+  spg.setAttribute('aTint', new THREE.BufferAttribute(sti,1));
+  var sparkMat = new THREE.ShaderMaterial({
+    transparent:true, depthWrite:false, blending:THREE.AdditiveBlending,
+    uniforms:{ uTime:{value:0}, uDpr:{value:renderer.getPixelRatio()} },
+    vertexShader:[
+      'attribute float aSize; attribute float aPhase; attribute float aTint;',
+      'uniform float uTime, uDpr; varying float vA; varying float vT;',
+      'void main(){',
+      '  vec4 mv = modelViewMatrix * vec4(position,1.0);',
+      '  vA = 0.55 + 0.45*sin(uTime*0.9 + aPhase);',
+      '  vT = aTint;',
+      '  gl_PointSize = aSize * uDpr * (60.0 / -mv.z);',
+      '  gl_Position = projectionMatrix * mv;',
+      '}'
+    ].join('\n'),
+    fragmentShader:[
+      'varying float vA; varying float vT;',
+      'void main(){',
+      '  vec2 c = gl_PointCoord - 0.5;',
+      '  float d = length(c);',
+      '  float core = smoothstep(0.16, 0.0, d);',
+      /* τέσσερις ακτίνες: οριζόντια + κάθετη λάμψη */
+      '  float sx = pow(max(0.0, 1.0 - abs(c.y)*17.0), 3.0) * smoothstep(0.5, 0.02, abs(c.x));',
+      '  float sy = pow(max(0.0, 1.0 - abs(c.x)*17.0), 3.0) * smoothstep(0.5, 0.02, abs(c.y));',
+      '  float a = min(core*1.2 + (sx + sy)*0.95, 1.0) * vA;',
+      '  vec3 white  = vec3(1.0, 0.98, 0.94);',
+      '  vec3 violet = vec3(0.72, 0.60, 1.0);',
+      '  vec3 gold   = vec3(1.0, 0.85, 0.58);',
+      '  vec3 col = vT < 0.45 ? white : (vT < 0.8 ? violet : gold);',
+      '  gl_FragColor = vec4(col, a);',
+      '}'
+    ].join('\n')
+  });
+  scene.add(new THREE.Points(spg, sparkMat));
+
+  /* (ο γαλαξίας πάνω αριστερά αφαιρέθηκε) */
+
+  /* --- space clouds (νεφελώματα) --- */
+  var nebulas = [];
+  function addNebula(x, y, z, size, r, g2, b, alpha, seed){
+    var m = new THREE.Mesh(
+      new THREE.PlaneGeometry(size, size*0.65),
+      new THREE.ShaderMaterial({
+        transparent:true, depthWrite:false, blending:THREE.AdditiveBlending,
+        uniforms:{ uTime:{value:0}, uSeed:{value:seed}, uCol:{value:new THREE.Vector3(r,g2,b)}, uA:{value:alpha} },
+        vertexShader:'varying vec2 vUv2; void main(){ vUv2=uv; gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0); }',
+        fragmentShader:[
+          'uniform float uTime, uSeed, uA; uniform vec3 uCol; varying vec2 vUv2;',
+          noiseGLSL,
+          'void main(){',
+          '  vec2 uv = vUv2 - 0.5;',
+          '  float mask = smoothstep(0.5, 0.12, length(uv * vec2(1.0, 1.35)));',
+          '  float n = fbm(vec3(vUv2*2.6 + uSeed, uTime*0.012 + uSeed));',
+          '  float a = smoothstep(0.32, 0.78, n) * mask * uA;',
+          '  gl_FragColor = vec4(uCol, a);',
+          '}'
+        ].join('\n')
+      })
+    );
+    m.position.set(x, y, z);
+    scene.add(m);
+    nebulas.push(m);
+  }
+  addNebula(-6.5,  2.8, -11, 11, 0.44, 0.34, 0.85, 0.19, 3.1);  /* βιολετί */
+  addNebula( 5.5, -3.4, -12, 13, 0.28, 0.42, 0.88, 0.16, 7.7);  /* μπλε-ίντιγκο */
+  addNebula(-3.0, -4.2,  -9,  9, 0.85, 0.68, 0.42, 0.13, 12.4); /* αχνό χρυσό */
+  addNebula( 1.5,  4.6, -13, 12, 0.50, 0.38, 0.80, 0.15, 21.9); /* βιολετί ψηλά */
+  addNebula( 7.2,  1.6, -11, 10, 0.32, 0.46, 0.90, 0.15, 44.0); /* μπλε δεξιά */
+  addNebula(-8.2, -1.2, -10, 10, 0.42, 0.30, 0.80, 0.14, 31.2); /* μωβ αριστερά */
+  addNebula( 0.5, -5.6, -12, 14, 0.55, 0.40, 0.82, 0.12, 55.5); /* μωβ χαμηλά */
+
+  /* --- πεφταστέρια --- */
+  var meteors = [];
+  for(var mi=0; mi<3; mi++){
+    var mm = new THREE.Mesh(
+      new THREE.PlaneGeometry(1, 1),
+      new THREE.ShaderMaterial({
+        transparent:true, depthWrite:false, blending:THREE.AdditiveBlending,
+        uniforms:{ uLife:{value:0} },
+        vertexShader:'varying vec2 vUv2; void main(){ vUv2=uv; gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0); }',
+        fragmentShader:[
+          'uniform float uLife; varying vec2 vUv2;',
+          'void main(){',
+          '  float head = vUv2.x;',                              /* 1.0 = κεφαλή */
+          '  float trail = pow(head, 3.0);',                     /* η ουρά σβήνει */
+          '  float width = pow(max(0.0, 1.0 - abs(vUv2.y-0.5)*2.0), 2.0);',
+          '  float spark = smoothstep(0.93, 1.0, head) * 1.6;',  /* φωτεινή κεφαλή */
+          '  float fade = sin(clamp(uLife, 0.0, 1.0) * 3.14159);',
+          '  float a = (trail + spark) * width * fade * 1.6;',
+          '  gl_FragColor = vec4(vec3(1.0, 0.99, 0.94), a);',
+          '}'
+        ].join('\n')
+      })
+    );
+    mm.visible = false;
+    scene.add(mm);
+    meteors.push({mesh:mm, active:false, t:0, dur:1, vx:0, vy:0});
+  }
+  var nextMeteor = 0.8;   /* το πρώτο πέφτει σχεδόν αμέσως */
+  function spawnMeteor(now){
+    for(var k=0;k<meteors.length;k++){
+      if(meteors[k].active) continue;
+      var M = meteors[k];
+      M.active = true; M.t = 0;
+      M.dur = 1.2 + Math.random()*0.7;
+      var fromLeft = Math.random() < 0.5;
+      M.mesh.position.set((Math.random()*2-1)*4.5, 1.2 + Math.random()*2.0, -3.0);
+      M.vx = (fromLeft ? 1 : -1) * (3.0 + Math.random()*2.0);
+      M.vy = -(1.8 + Math.random()*1.4);
+      M.mesh.rotation.z = Math.atan2(M.vy, M.vx);
+      var len = 2.2 + Math.random()*1.4;
+      M.mesh.scale.set(len, 0.12, 1);
+      M.mesh.visible = true;
+      break;
+    }
+    nextMeteor = now + 1.8 + Math.random()*3.5;
+  }
+
+  /* --- black hole group --- */
+  var hole = new THREE.Group();
+  scene.add(hole);
+
+  /* event horizon: όχι σκέτο μαύρο — αχνά αστέρια που στροβιλίζονται μέσα του */
+  var horizonMat = new THREE.ShaderMaterial({
+    uniforms:{ uTime:{value:0} },
+    vertexShader:'varying vec3 vP; void main(){ vP = position; gl_Position = projectionMatrix*modelViewMatrix*vec4(position,1.0); }',
+    fragmentShader:[
+      'uniform float uTime; varying vec3 vP;',
+      noiseGLSL,
+      'void main(){',
+      '  vec3 p = normalize(vP);',
+      /* αργός στροβιλισμός των πάντων προς τα μέσα */
+      '  float ang = atan(p.z, p.x) + uTime*0.05;',
+      '  vec3 q = vec3(cos(ang)*length(p.xz), p.y, sin(ang)*length(p.xz));',
+      /* αραιά αστεράκια-κουκκίδες που τρεμοπαίζουν */
+      '  float h = hash(floor(q*70.0));',
+      '  float star = step(0.996, h);',
+      '  float tw = 0.45 + 0.55*sin(uTime*1.4 + h*80.0);',
+      '  vec3 col = vec3(0.82,0.86,1.0) * star * tw * 0.95;',
+      /* πολύ αχνή ομίχλη-δίνη */
+      '  col += vec3(0.06,0.07,0.13) * pow(fbm(q*2.4 + vec3(0.0, uTime*0.015, 0.0)), 2.2);',
+      '  gl_FragColor = vec4(col, 1.0);',
+      '}'
+    ].join('\n')
+  });
+  hole.add(new THREE.Mesh(new THREE.SphereGeometry(0.62, 48, 48), horizonMat));
+
+  /* accretion disk */
+  var diskGeo = new THREE.RingGeometry(0.74, 6.8, 220, 12);
+  diskGeo.rotateX(-Math.PI/2);
+  var diskMat = new THREE.ShaderMaterial({
+    side:THREE.DoubleSide, transparent:true, depthWrite:false, blending:THREE.AdditiveBlending,
+    uniforms:{ uTime:{value:0}, uGlow:{value:1.0}, uSpin:{value:0} },
+    vertexShader:[
+      'varying vec3 vP;',
+      'void main(){ vP = position; gl_Position = projectionMatrix*modelViewMatrix*vec4(position,1.0); }'
+    ].join('\n'),
+    fragmentShader:[
+      'uniform float uTime; uniform float uGlow; uniform float uSpin; varying vec3 vP;',
+      noiseGLSL,
+      'void main(){',
+      '  float r = length(vP.xz);',
+      '  float ang = atan(vP.z, vP.x);',
+      /* differential rotation: inner spins faster — this is the "alive" slow spin */
+      '  float sw = ang + (uTime + uSpin) * 0.16 / pow(max(r, 0.4)*0.55, 1.5);',
+      /* μακριές λεπτές ίνες: λίγη γωνιακή, πολλή ακτινική λεπτομέρεια */
+      '  float streak = fbm(vec3(cos(sw)*1.3, sin(sw)*1.3, r*4.8));',
+      '  float fine   = fbm(vec3(cos(sw)*3.6, sin(sw)*3.6, r*11.0 - uTime*0.04));',
+      '  float s = streak*0.60 + fine*0.40;',
+      '  float body = smoothstep(0.30, 0.72, s);',
+      /* fade inner/outer edges */
+      '  float fall = smoothstep(6.8, 1.6, r) * smoothstep(0.72, 0.95, r);',
+      /* καυτό λαμπερό χείλος κολλητά στην τρύπα */
+      '  float hot = smoothstep(1.35, 0.80, r);',
+      /* doppler beaming: η μία πλευρά πιο φωτεινή */
+      '  float dop = 0.70 + 0.42*sin(ang);',
+      '  vec3 inner = vec3(1.0, 0.99, 0.95);',
+      '  vec3 outer = vec3(0.72, 0.75, 0.84);',
+      '  vec3 col = mix(inner, outer, smoothstep(1.2, 5.5, r));',
+      '  float lum = (body*0.95 + hot*body*0.75 + hot*0.35 + 0.05) * fall * dop * uGlow;',
+      '  gl_FragColor = vec4(col * lum * 1.55, lum);',
+      '}'
+    ].join('\n')
+  });
+  var disk = new THREE.Mesh(diskGeo, diskMat);
+  hole.add(disk);
+
+  /* photon ring: λεπτό διακριτικό δαχτυλίδι γύρω από τον ορίζοντα */
+  var pr = new THREE.Mesh(
+    new THREE.TorusGeometry(0.68, 0.012, 10, 140),
+    new THREE.MeshBasicMaterial({color:0xfff6e2, transparent:true, opacity:0.55, blending:THREE.AdditiveBlending, depthWrite:false})
+  );
+  scene.add(pr);
+
+  /* απαλό glow γύρω από όλο το σύστημα */
+  var glow = new THREE.Mesh(
+    new THREE.PlaneGeometry(11, 11),
+    new THREE.ShaderMaterial({
+      transparent:true, depthWrite:false, blending:THREE.AdditiveBlending,
+      uniforms:{},
+      vertexShader:'varying vec2 vUv2; void main(){ vUv2=uv; gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0); }',
+      fragmentShader:[
+        'varying vec2 vUv2;',
+        'void main(){',
+        '  float d = length(vUv2 - 0.5) * 2.0;',
+        '  float a = pow(max(1.0 - d, 0.0), 2.6) * 0.16;',
+        '  gl_FragColor = vec4(vec3(1.0, 0.92, 0.74), a);',
+        '}'
+      ].join('\n')
+    })
+  );
+  scene.add(glow);
+
+  /* --- scroll: πλησιάζεις από το πλάι προς το κέντρο --- */
+  /* p, θέση x/y/z, κλίμακα s, κλίση rx (0=πλάι/edge-on), roll rz */
+  var KEYS = [
+    {p:0.00, x: 2.05, y:-0.05, z:-1.6, s:0.66, rx:0.24, rz:-0.62},
+    {p:0.35, x: 1.15, y: 0.06, z:-0.6, s:0.72, rx:0.40, rz:-0.45},
+    {p:0.70, x: 0.40, y: 0.02, z: 0.4, s:0.79, rx:0.66, rz:-0.22},
+    {p:1.00, x: 0.00, y:-0.08, z: 1.3, s:0.88, rx:0.92, rz: 0.00}
+  ];
+  function frame(p){
+    for(var i=0;i<KEYS.length-1;i++){
+      var a = KEYS[i], b = KEYS[i+1];
+      if(p <= b.p || i === KEYS.length-2){
+        var t = (p - a.p) / (b.p - a.p);
+        t = Math.max(0, Math.min(1, t));
+        t = t*t*(3-2*t);
+        return {
+          x:a.x+(b.x-a.x)*t, y:a.y+(b.y-a.y)*t, z:a.z+(b.z-a.z)*t,
+          s:a.s+(b.s-a.s)*t, rx:a.rx+(b.rx-a.rx)*t, rz:a.rz+(b.rz-a.rz)*t
+        };
+      }
+    }
+  }
+
+  var scrollP = 0, mx = 0, my = 0, tx = 0, ty = 0;
+  var lastP = 0, spinBoost = 0, spinTime = 0;
+  addEventListener('scroll', function(){
+    var h = document.body.scrollHeight - innerHeight;
+    scrollP = h > 0 ? window.scrollY / h : 0;
+    nav.classList.toggle('solid', window.scrollY > 40);
+  }, {passive:true});
+
+  addEventListener('pointermove', function(e){
+    tx = (e.clientX / innerWidth  - 0.5) * 2;
+    ty = (e.clientY / innerHeight - 0.5) * 2;
+  }, {passive:true});
+
+  addEventListener('resize', function(){
+    mobile = innerWidth < 760;
+    camera.aspect = innerWidth/innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(innerWidth, innerHeight);
+  });
+
+  var clock = new THREE.Clock();
+  (function loop(){
+    requestAnimationFrame(loop);
+    var t = clock.getElapsedTime();
+    var dt = Math.min(clock.getDelta(), 0.05);
+
+    diskMat.uniforms.uTime.value = t;
+    starMat.uniforms.uTime.value = t;
+    horizonMat.uniforms.uTime.value = t;
+    sparkMat.uniforms.uTime.value = t;
+    for(var ni=0; ni<nebulas.length; ni++) nebulas[ni].material.uniforms.uTime.value = t;
+
+    var f = frame(scrollP);
+    hole.position.x += (f.x - hole.position.x) * 0.028;
+    hole.position.y += (f.y - hole.position.y) * 0.028;
+    hole.position.z += (f.z - hole.position.z) * 0.028;
+    hole.rotation.x += (f.rx - hole.rotation.x) * 0.028;
+    hole.rotation.z += (f.rz - hole.rotation.z) * 0.028;
+    var s = hole.scale.x + (f.s - hole.scale.x) * 0.028;
+    hole.scale.set(s, s, s);
+
+    /* ο δίσκος επιταχύνει όσο πιο γρήγορα κάνεις scroll */
+    var vel = Math.abs(scrollP - lastP) / Math.max(dt, 0.001);
+    lastP = scrollP;
+    spinBoost += (Math.min(vel * 14, 26) - spinBoost) * 0.06;
+    spinTime += spinBoost * dt;
+    diskMat.uniforms.uSpin.value = spinTime;
+    diskMat.uniforms.uGlow.value = 1.0 + Math.min(spinBoost * 0.02, 0.4);
+
+    /* θέση τρύπας για τον βαρυτικό φακό των αστεριών */
+    starMat.uniforms.uHole.value.copy(hole.position);
+    starMat.uniforms.uMass.value = 1.15 * s;
+
+    /* photon ring & glow ακολουθούν την τρύπα και κοιτούν την κάμερα */
+    pr.position.copy(hole.position);
+    pr.scale.set(s, s, s);
+    pr.lookAt(camera.position);
+    glow.position.copy(hole.position);
+    glow.scale.set(s, s, s);
+    glow.lookAt(camera.position);
+
+    if(!reduce){
+      stars.rotation.y += dt * 0.005;
+      hole.rotation.y += dt * 0.012;   /* αργή, "αληθινή" περιστροφή όλου του συστήματος */
+
+      /* πεφταστέρια */
+      if(t > nextMeteor) spawnMeteor(t);
+      for(var kk=0; kk<meteors.length; kk++){
+        var M = meteors[kk];
+        if(!M.active) continue;
+        M.t += dt;
+        M.mesh.position.x += M.vx * dt;
+        M.mesh.position.y += M.vy * dt;
+        M.mesh.material.uniforms.uLife.value = M.t / M.dur;
+        if(M.t >= M.dur){ M.active = false; M.mesh.visible = false; }
+      }
+
+      mx += (tx - mx) * 0.03;
+      my += (ty - my) * 0.03;
+      camera.position.x = mx * 0.4;
+      camera.position.y = -my * 0.25;
+      camera.lookAt(hole.position.x * 0.3, 0, 0);
+    }
+
+    renderer.render(scene, camera);
+  })();
+})();
+</script>
+</body>
+</html>
