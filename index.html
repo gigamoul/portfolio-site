@@ -3,18 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="dark">
 <title>Galaxy Studios — Marketing sites, Custom CMS &amp; E-shops</title>
 <meta name="description" content="Σχεδιάζουμε και αναπτύσσουμε marketing sites, custom CMS και e-shops. Γρήγορα, καθαρά, φτιαγμένα να φέρνουν πελάτες.">
 
-<!--
-  ========================================================
-  ΤΙ ΝΑ ΑΛΛΑΞΕΙΣ (Ctrl+F):
-  1. Brand name: Galaxy Studios (ήδη μπήκε παντού)
-  2. "ΕΡΓΟ 0"        -> πραγματικά έργα + links + screenshots
-  3. data-target="…" -> τα νούμερα στα στατιστικά
-  4. "mailto:" / "tel:" / "wa.me" -> στοιχεία επικοινωνίας
-  ========================================================
--->
+
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -25,8 +18,8 @@
   --void:#050508;
   --ink:#f4f2ec;
   --muted:#a8a6b4;
-  --gold:#e6c684;
-  --gold-deep:#c29a4e;
+  --gold:#e2cf9c;
+  --gold-deep:#b89c5e;
   --plat:#e9ecf4;
   --rose:#e8a98e;
   --line:rgba(230,198,132,.16);
@@ -723,7 +716,7 @@ footer{border-top:1px solid var(--line-soft);padding:46px 0;margin-top:110px}
   camera.position.set(0, 0, 6);
 
   var noiseGLSL = [
-    'float hash(vec3 p){ return fract(sin(dot(p, vec3(127.1,311.7,74.7)))*43758.5453); }',
+    'float hash(vec3 p){ p = fract(p*0.3183099 + 0.1); p *= 17.0; return fract(p.x*p.y*p.z*(p.x+p.y+p.z)); }',
     'float noise(vec3 p){',
     '  vec3 i=floor(p), f=fract(p); f=f*f*(3.0-2.0*f);',
     '  float n000=hash(i), n100=hash(i+vec3(1,0,0)), n010=hash(i+vec3(0,1,0)), n110=hash(i+vec3(1,1,0));',
